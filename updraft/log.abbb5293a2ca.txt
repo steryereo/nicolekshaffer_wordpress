@@ -1,0 +1,287 @@
+0000.007 (0) Opened log file at time: Sun, 30 Mar 2014 03:24:49 +0000 on http://nicolekshaffer.com
+0000.015 (0) UpdraftPlus WordPress backup plugin (http://updraftplus.com): 1.9.0 WP: 3.2.1 PHP: 5.4.26 (Linux just78.justhost.com 3.4.83-20140315.1.bh6.x86_64 #1 SMP Sat Mar 15 21:39:33 EDT 2014 x86_64) MySQL: 5.5.37-log Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 13M | 13.5M) multisite: N mcrypt: Y ZipArchive::addFile: Y W3TC/ObjectCache: N
+0000.215 (0) Free space on disk containing Updraft's temporary directory: 1216282.5 Mb
+0000.226 (0) Tasks: Backup files: 1 (schedule: every4hours) Backup DB:  (schedule: every4hours)
+0000.231 (0) Processed schedules. Tasks now: Backup files: 1 Backup DB: 1
+0000.257 (0) Requesting semaphore lock (fd)
+0000.270 (0) Set semaphore last lock (fd) time to 2014-03-30 03:24:49
+0000.272 (0) Semaphore lock (fd) complete
+0000.288 (0) Backup run: resumption=0, nonce=abbb5293a2ca, begun at=1396149889 (0s ago), job type=backup
+0000.291 (0) Scheduling a resumption (1) after 300 seconds (1396150189) in case this run gets aborted
+0000.319 (0) Checking if we have a zip executable available
+0000.320 (0) Testing: /usr/bin/zip
+0000.339 (0) Output: zip warning: binziptest/test.zip not found or empty
+0000.343 (0) Output: adding: binziptest/subdir1/	(in=0) (out=0) (stored 0%)
+0000.344 (0) Output: adding: binziptest/subdir1/subdir2/	(in=0) (out=0) (stored 0%)
+0000.346 (0) Output: adding: binziptest/subdir1/subdir2/test.html	(in=127) (out=105) (deflated 17%)
+0000.347 (0) Output: total bytes=127, compressed=105 -> 17% savings
+0000.361 (0) Output: adding: binziptest/subdir1/subdir2/test2.html	(in=134) (out=109) (deflated 19%)
+0000.362 (0) Output: total bytes=261, compressed=214 -> 18% savings
+0000.385 (0) Working binary zip found: /usr/bin/zip
+0000.391 (0) Zip engine: found/will use a binary zip: /usr/bin/zip
+0000.392 (0) Creation of backups of directories: beginning
+0000.403 (0) Beginning creation of dump of plugins (split every: 800 Mb)
+0000.685 (0) Total entities for the zip file: 87 directories, 506 files, 8.7 Mb
+0000.691 (0) Zip: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-plugins.zip.tmp: 100 files added (on-disk size: 0 Kb)
+0000.695 (0) Zip: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-plugins.zip.tmp: 200 files added (on-disk size: 0 Kb)
+0000.702 (0) Zip: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-plugins.zip.tmp: 300 files added (on-disk size: 0 Kb)
+0000.706 (0) Zip: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-plugins.zip.tmp: 400 files added (on-disk size: 0 Kb)
+0000.717 (0) Zip: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-plugins.zip.tmp: 500 files added (on-disk size: 0 Kb)
+0000.721 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 500 files added on this batch (8.6 Mb, 506 files batched, 501 (501) added so far); re-opening (prior size: 0 Kb)
+0002.351 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-plugins.zip.tmp: size is now: 3.60 Mb
+0003.373 (0) Created plugins zip (0) - 3686.4 Kb in 2.8 s (1335.9 Kb/s) (SHA1 checksum: 42132e248e4336b8606a168a81f2b1fff6c057f4)
+0003.380 (0) Beginning creation of dump of themes (split every: 800 Mb)
+0003.607 (0) Total entities for the zip file: 47 directories, 508 files, 3.2 Mb
+0003.613 (0) Zip: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-themes.zip.tmp: 100 files added (on-disk size: 0 Kb)
+0003.618 (0) Zip: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-themes.zip.tmp: 200 files added (on-disk size: 0 Kb)
+0003.624 (0) Zip: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-themes.zip.tmp: 300 files added (on-disk size: 0 Kb)
+0003.628 (0) Zip: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-themes.zip.tmp: 400 files added (on-disk size: 0 Kb)
+0003.631 (0) Zip: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-themes.zip.tmp: 500 files added (on-disk size: 0 Kb)
+0003.632 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 500 files added on this batch (3.2 Mb, 508 files batched, 501 (501) added so far); re-opening (prior size: 0 Kb)
+0004.189 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-themes.zip.tmp: size is now: 2.30 Mb
+0004.243 (0) Created themes zip (0) - 2343.7 Kb in 0.7 s (3511.3 Kb/s) (SHA1 checksum: cf96b5c4a6da81cf0d64360a116be089dbf041c8)
+0004.246 (0) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone
+0004.248 (0) Looking for candidates to back up in: /home4/nicolek4/public_html/wp-content/uploads
+0004.249 (0) finding files: 2014: adding to list (1)
+0004.252 (0) finding files: 2013: adding to list (2)
+0004.253 (0) finding files: 2011: adding to list (3)
+0004.257 (0) finding files: 2012: adding to list (4)
+0004.262 (0) Beginning creation of dump of uploads (split every: 800 Mb)
+0004.750 (0) Total entities for the zip file: 42 directories, 530 files, 36.5 Mb
+0004.753 (0) Zip: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-uploads.zip.tmp: 100 files added (on-disk size: 0 Kb)
+0004.758 (0) Zip: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-uploads.zip.tmp: 200 files added (on-disk size: 0 Kb)
+0004.766 (0) Zip: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-uploads.zip.tmp: 300 files added (on-disk size: 0 Kb)
+0004.772 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 25 Mb added on this batch (25.5 Mb, 530 files batched, 305 (305) added so far); re-opening (prior size: 0 Kb)
+0008.001 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-uploads.zip.tmp: size is now: 24.80 Mb
+0008.003 (0) A useful amount of data was added after this amount of zip processing: 3.6 s (normalised: 3.5 s, rate: 7282.8 Kb/s)
+0008.004 (0) Performance is good - will increase the amount of data we attempt to batch (time=3.581484079361, normalised_time=3.5151155956579, max_time=-1, data points known=0, old_max_bytes=26214400, new_max_bytes=44745726)
+0008.008 (0) Zip: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-uploads.zip.tmp: 400 files added (on-disk size: 25368.8 Kb)
+0008.011 (0) Zip: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-uploads.zip.tmp: 500 files added (on-disk size: 25368.8 Kb)
+0010.485 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-uploads.zip.tmp: size is now: 35.20 Mb
+0010.777 (0) Created uploads zip (0) - 36085.7 Kb in 6.3 s (5709.1 Kb/s) (SHA1 checksum: 86b773481679d34b71b0e6595140954f81eb2553)
+0010.783 (0) Beginning backup of other directories found in the content directory (index: 0)
+0010.784 (0) Exclusion option setting (others): upgrade,cache,updraft,backup*,*backups
+0010.785 (0) Looking for candidates to back up in: /home4/nicolek4/public_html/wp-content
+0010.786 (0) finding files: plugins: skipping: this is the plugins directory
+0010.788 (0) finding files: updraft: skipping: this is the updraft directory
+0010.789 (0) finding files: index.php: adding to list (1)
+0010.792 (0) finding files: uploads: skipping: this is the uploads directory
+0010.793 (0) finding files: gallery: adding to list (2)
+0010.797 (0) finding files: themes: skipping: this is the themes directory
+0010.798 (0) finding files: upgrade: skipping: excluded by options
+0011.001 (0) Total entities for the zip file: 3 directories, 17 files, 2.3 Mb
+0011.226 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-others.zip.tmp: size is now: 2.20 Mb
+0011.246 (0) Created others zip (0) - 2256.3 Kb in 0.3 s (8766.4 Kb/s) (SHA1 checksum: 696d36f4ebf7032223b414a8c08537609f1b7109)
+0011.251 (0) Saving backup status to database (elements: 8)
+0011.258 (0) Beginning creation of database dump
+0011.266 (0) Testing: /usr/bin/mysqldump
+0011.296 (0) Working binary mysqldump found: /usr/bin/mysqldump
+0011.310 (0) Table wp_options: Total expected rows (approximate): 289
+0011.437 (0) Table wp_options: Total rows added: 288 in 0.12 seconds
+0011.447 (0) Table wp_options: finishing file (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_options.table.gz - 64 Kb)
+0011.466 (0) Table wp_users: Total expected rows (approximate): 3
+0011.479 (0) Table wp_users: Total rows added: 3 in 0.01 seconds
+0011.480 (0) Table wp_users: finishing file (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_users.table.gz - 0 Kb)
+0011.494 (0) Table wp_usermeta: Total expected rows (approximate): 55
+0011.512 (0) Table wp_usermeta: Total rows added: 55 in 0.01 seconds
+0011.519 (0) Table wp_usermeta: finishing file (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_usermeta.table.gz - 0 Kb)
+0011.528 (0) Table wp_commentmeta: Total expected rows (approximate): 0
+0011.534 (0) Table wp_commentmeta: Total rows added: 0 in 0.00 seconds
+0011.545 (0) Table wp_commentmeta: finishing file (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_commentmeta.table.gz - 0 Kb)
+0011.568 (0) Table wp_comments: Total expected rows (approximate): 1
+0011.584 (0) Table wp_comments: Total rows added: 1 in 0.01 seconds
+0011.585 (0) Table wp_comments: finishing file (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_comments.table.gz - 0 Kb)
+0011.607 (0) Table wp_links: Total expected rows (approximate): 7
+0011.622 (0) Table wp_links: Total rows added: 7 in 0.01 seconds
+0011.624 (0) Table wp_links: finishing file (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_links.table.gz - 0 Kb)
+0011.628 (0) Table wp_postmeta: Total expected rows (approximate): 512
+0011.657 (0) Table wp_postmeta: Total rows added: 512 in 0.03 seconds
+0011.658 (0) Table wp_postmeta: finishing file (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_postmeta.table.gz - 0 Kb)
+0011.665 (0) Table wp_posts: Total expected rows (approximate): 380
+0011.732 (0) Table wp_posts: Total rows added: 380 in 0.07 seconds
+0011.734 (0) Table wp_posts: finishing file (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_posts.table.gz - 0 Kb)
+0011.740 (0) Table wp_term_relationships: Total expected rows (approximate): 26
+0011.745 (0) Table wp_term_relationships: Total rows added: 26 in 0.00 seconds
+0011.750 (0) Table wp_term_relationships: finishing file (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_term_relationships.table.gz - 0 Kb)
+0011.752 (0) Table wp_term_taxonomy: Total expected rows (approximate): 4
+0011.756 (0) Table wp_term_taxonomy: Total rows added: 4 in 0.00 seconds
+0011.758 (0) Table wp_term_taxonomy: finishing file (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_term_taxonomy.table.gz - 0 Kb)
+0011.760 (0) Table wp_terms: Total expected rows (approximate): 4
+0011.763 (0) Table wp_terms: Total rows added: 4 in 0.00 seconds
+0011.765 (0) Table wp_terms: finishing file (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_terms.table.gz - 0 Kb)
+0011.770 (0) Table wp_nivoslider4wp: Total expected rows (approximate): 0
+0011.779 (0) Table wp_nivoslider4wp: Total rows added: 0 in 0.01 seconds
+0011.780 (0) Table wp_nivoslider4wp: finishing file (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_nivoslider4wp.table.gz - 0 Kb)
+0011.786 (0) Table wp_smooth_slider: Total expected rows (approximate): 0
+0011.792 (0) Table wp_smooth_slider: Total rows added: 0 in 0.01 seconds
+0011.795 (0) Table wp_smooth_slider: finishing file (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_smooth_slider.table.gz - 0 Kb)
+0011.800 (0) Table wp_smooth_slider_meta: Total expected rows (approximate): 1
+0011.805 (0) Table wp_smooth_slider_meta: Total rows added: 1 in 0.00 seconds
+0011.810 (0) Table wp_smooth_slider_meta: finishing file (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_smooth_slider_meta.table.gz - 0 Kb)
+0011.814 (0) Table wp_smooth_slider_postmeta: Total expected rows (approximate): 0
+0011.826 (0) Table wp_smooth_slider_postmeta: Total rows added: 0 in 0.01 seconds
+0011.827 (0) Table wp_smooth_slider_postmeta: finishing file (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_smooth_slider_postmeta.table.gz - 0 Kb)
+0011.835 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_options.table.gz (1/15): adding to final database dump
+0011.874 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_users.table.gz (2/15): adding to final database dump
+0011.876 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_usermeta.table.gz (3/15): adding to final database dump
+0011.879 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_commentmeta.table.gz (4/15): adding to final database dump
+0011.880 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_comments.table.gz (5/15): adding to final database dump
+0011.882 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_links.table.gz (6/15): adding to final database dump
+0011.883 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_postmeta.table.gz (7/15): adding to final database dump
+0011.893 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_posts.table.gz (8/15): adding to final database dump
+0011.907 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_term_relationships.table.gz (9/15): adding to final database dump
+0011.908 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_term_taxonomy.table.gz (10/15): adding to final database dump
+0011.914 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_terms.table.gz (11/15): adding to final database dump
+0011.915 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_nivoslider4wp.table.gz (12/15): adding to final database dump
+0011.916 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_smooth_slider.table.gz (13/15): adding to final database dump
+0011.917 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_smooth_slider_meta.table.gz (14/15): adding to final database dump
+0011.918 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db-table-wp_smooth_slider_postmeta.table.gz (15/15): adding to final database dump
+0011.919 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db.gz: finished writing out complete database file (128 Kb)
+0011.923 (0) Total database tables backed up: 15 (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db.gz, size: 146894, checksum (SHA1): b2bbb6fa617a9ab29288f4e1aed8a674275fadee)
+0011.925 (0) Saving backup history
+0011.943 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+0011.944 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-themes.zip: themes: This file has not yet been successfully uploaded: will queue
+0011.945 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+0011.947 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-others.zip: others: This file has not yet been successfully uploaded: will queue
+0011.948 (0) backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db.gz: db: This file has not yet been successfully uploaded: will queue
+0011.956 (0) Requesting upload of the files that have not yet been successfully uploaded (5)
+0011.957 (0) Cloud backup selection: dropbox
+0011.958 (0) Beginning dispatch of backup to remote (dropbox)
+0011.958 (0) Dropbox: begin cloud upload
+0011.965 (0) Dropbox: access gained
+0012.235 (0) Dropbox quota usage: normal=3148.3 Mb, shared=4603.3 Mb, total=14080 Mb, available=6328.3 Mb
+0012.246 (0) Dropbox: Attempt to upload: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-plugins.zip to: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-plugins.zip
+0013.932 (0) Dropbox chunked upload: 13.9 % uploaded (o0WH0qRZ5ZbyOnNUpEEElA, 524288)
+0015.616 (0) Dropbox chunked upload: 27.8 % uploaded (o0WH0qRZ5ZbyOnNUpEEElA, 1048576)
+0017.417 (0) Dropbox chunked upload: 41.7 % uploaded (o0WH0qRZ5ZbyOnNUpEEElA, 1572864)
+0019.582 (0) Dropbox chunked upload: 55.6 % uploaded (o0WH0qRZ5ZbyOnNUpEEElA, 2097152)
+0021.622 (0) Dropbox chunked upload: 69.4 % uploaded (o0WH0qRZ5ZbyOnNUpEEElA, 2621440)
+0023.955 (0) Dropbox chunked upload: 83.3 % uploaded (o0WH0qRZ5ZbyOnNUpEEElA, 3145728)
+0026.118 (0) Dropbox chunked upload: 97.2 % uploaded (o0WH0qRZ5ZbyOnNUpEEElA, 3670016)
+0028.067 (0) Dropbox chunked upload: 100 % uploaded (o0WH0qRZ5ZbyOnNUpEEElA, 3774873)
+0030.168 (0) Recording as successfully uploaded: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-plugins.zip (b2a817549b29ef1eb12829f933b06449)
+0030.174 (0) Deleting local file: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-plugins.zip: OK
+0030.174 (0) Dropbox: File upload success (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-plugins.zip): 3686 Kb in 17s (205 Kb/s)
+0030.408 (0) Dropbox quota usage: normal=3151.9 Mb, shared=4603.3 Mb, total=14080 Mb, available=6324.7 Mb
+0030.411 (0) Dropbox: Attempt to upload: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-themes.zip to: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-themes.zip
+0031.846 (0) Dropbox chunked upload: 21.8 % uploaded (jFPKvzy0liKxB-6gowTTgA, 524288)
+0033.547 (0) Dropbox chunked upload: 43.7 % uploaded (jFPKvzy0liKxB-6gowTTgA, 1048576)
+0035.639 (0) Dropbox chunked upload: 65.5 % uploaded (jFPKvzy0liKxB-6gowTTgA, 1572864)
+0037.543 (0) Dropbox chunked upload: 87.4 % uploaded (jFPKvzy0liKxB-6gowTTgA, 2097152)
+0039.234 (0) Dropbox chunked upload: 100 % uploaded (jFPKvzy0liKxB-6gowTTgA, 2399945)
+0040.585 (0) Recording as successfully uploaded: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-themes.zip (01aff72200d089e6d9a6eaa23bfe6b4d)
+0040.590 (0) Deleting local file: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-themes.zip: OK
+0040.592 (0) Dropbox: File upload success (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-themes.zip): 2343 Kb in 10s (230 Kb/s)
+0040.853 (0) Dropbox quota usage: normal=3154.2 Mb, shared=4603.3 Mb, total=14080 Mb, available=6322.5 Mb
+0040.861 (0) Dropbox: Attempt to upload: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-uploads.zip to: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-uploads.zip
+0042.452 (0) Dropbox chunked upload: 1.4 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 524288)
+0052.933 (0) Dropbox chunked upload: 2.8 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 1048576)
+0054.753 (0) Dropbox chunked upload: 4.3 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 1572864)
+0056.481 (0) Dropbox chunked upload: 5.7 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 2097152)
+0058.281 (0) Dropbox chunked upload: 7.1 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 2621440)
+0060.285 (0) Dropbox chunked upload: 8.5 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 3145728)
+0062.199 (0) Dropbox chunked upload: 9.9 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 3670016)
+0064.352 (0) Dropbox chunked upload: 11.4 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 4194304)
+0065.858 (0) Dropbox chunked upload: 12.8 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 4718592)
+0067.590 (0) Dropbox chunked upload: 14.2 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 5242880)
+0069.169 (0) Dropbox chunked upload: 15.6 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 5767168)
+0070.850 (0) Dropbox chunked upload: 17 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 6291456)
+0072.616 (0) Dropbox chunked upload: 18.4 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 6815744)
+0074.595 (0) Dropbox chunked upload: 19.9 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 7340032)
+0078.154 (0) Dropbox chunked upload: 21.3 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 7864320)
+0148.049 (0) Dropbox chunked upload: 22.7 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 8388608)
+0151.363 (0) Dropbox chunked upload: 24.1 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 8912896)
+0152.951 (0) Dropbox chunked upload: 25.5 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 9437184)
+0154.943 (0) Dropbox chunked upload: 27 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 9961472)
+0156.956 (0) Dropbox chunked upload: 28.4 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 10485760)
+0158.760 (0) Dropbox chunked upload: 29.8 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 11010048)
+0160.781 (0) Dropbox chunked upload: 31.2 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 11534336)
+0163.035 (0) Dropbox chunked upload: 32.6 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 12058624)
+0165.907 (0) Dropbox chunked upload: 34.1 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 12582912)
+0167.418 (0) Dropbox chunked upload: 35.5 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 13107200)
+0169.055 (0) Dropbox chunked upload: 36.9 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 13631488)
+0170.754 (0) Dropbox chunked upload: 38.3 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 14155776)
+0172.934 (0) Dropbox chunked upload: 39.7 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 14680064)
+0175.317 (0) Dropbox chunked upload: 41.1 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 15204352)
+0177.322 (0) Dropbox chunked upload: 42.6 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 15728640)
+0179.550 (0) Dropbox chunked upload: 44 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 16252928)
+0182.218 (0) Dropbox chunked upload: 45.4 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 16777216)
+0183.881 (0) Dropbox chunked upload: 46.8 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 17301504)
+0185.591 (0) Dropbox chunked upload: 48.2 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 17825792)
+0187.347 (0) Dropbox chunked upload: 49.7 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 18350080)
+0189.169 (0) Dropbox chunked upload: 51.1 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 18874368)
+0191.132 (0) Dropbox chunked upload: 52.5 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 19398656)
+0193.258 (0) Dropbox chunked upload: 53.9 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 19922944)
+0195.410 (0) Dropbox chunked upload: 55.3 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 20447232)
+0197.652 (0) Dropbox chunked upload: 56.8 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 20971520)
+0199.034 (0) Dropbox chunked upload: 58.2 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 21495808)
+0200.699 (0) Dropbox chunked upload: 59.6 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 22020096)
+0202.518 (0) Dropbox chunked upload: 61 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 22544384)
+0204.637 (0) Dropbox chunked upload: 62.4 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 23068672)
+0206.421 (0) Dropbox chunked upload: 63.8 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 23592960)
+0208.323 (0) Dropbox chunked upload: 65.3 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 24117248)
+0210.572 (0) Dropbox chunked upload: 66.7 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 24641536)
+0212.897 (0) Dropbox chunked upload: 68.1 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 25165824)
+0217.806 (0) Dropbox chunked upload: 69.5 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 25690112)
+0219.530 (0) Dropbox chunked upload: 70.9 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 26214400)
+0221.273 (0) Dropbox chunked upload: 72.4 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 26738688)
+0223.218 (0) Dropbox chunked upload: 73.8 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 27262976)
+0225.265 (0) Dropbox chunked upload: 75.2 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 27787264)
+0227.380 (0) Dropbox chunked upload: 76.6 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 28311552)
+0229.546 (0) Dropbox chunked upload: 78 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 28835840)
+0231.887 (0) Dropbox chunked upload: 79.5 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 29360128)
+0233.457 (0) Dropbox chunked upload: 80.9 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 29884416)
+0235.097 (0) Dropbox chunked upload: 82.3 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 30408704)
+0236.913 (0) Dropbox chunked upload: 83.7 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 30932992)
+0238.803 (0) Dropbox chunked upload: 85.1 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 31457280)
+0240.702 (0) Dropbox chunked upload: 86.5 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 31981568)
+0242.608 (0) Dropbox chunked upload: 88 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 32505856)
+0244.805 (0) Dropbox chunked upload: 89.4 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 33030144)
+0247.218 (0) Dropbox chunked upload: 90.8 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 33554432)
+0248.699 (0) Dropbox chunked upload: 92.2 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 34078720)
+0250.210 (0) Dropbox chunked upload: 93.6 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 34603008)
+0252.024 (0) Dropbox chunked upload: 95.1 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 35127296)
+0253.759 (0) Dropbox chunked upload: 96.5 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 35651584)
+0255.708 (0) The scheduled resumption is within 45 seconds - will reschedule
+0255.709 (0) Rescheduling resumption 1: moving to 345 seconds from now (1396150490)
+0255.711 (0) To decrease the likelihood of overlaps, increasing resumption interval to: 300 + 45 = 345
+0255.711 (0) Dropbox chunked upload: 97.9 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 36175872)
+0257.830 (0) Dropbox chunked upload: 99.3 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 36700160)
+0259.670 (0) Dropbox chunked upload: 100 % uploaded (7Hx1i5QZ-x9jlujmJfBPlw, 36951773)
+0261.386 (0) Recording as successfully uploaded: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-uploads.zip (2095cfcec81eed296c13f43047511cdd)
+0261.402 (0) Deleting local file: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-uploads.zip: OK
+0261.403 (0) Dropbox: File upload success (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-uploads.zip): 36085 Kb in 220s (163 Kb/s)
+0261.640 (0) Dropbox quota usage: normal=3189.5 Mb, shared=4603.3 Mb, total=14080 Mb, available=6287.2 Mb
+0261.644 (0) Dropbox: Attempt to upload: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-others.zip to: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-others.zip
+0263.453 (0) Dropbox chunked upload: 22.7 % uploaded (accSwFmisSW5korN-tk7NA, 524288)
+0265.033 (0) Dropbox chunked upload: 45.4 % uploaded (accSwFmisSW5korN-tk7NA, 1048576)
+0266.652 (0) Dropbox chunked upload: 68.1 % uploaded (accSwFmisSW5korN-tk7NA, 1572864)
+0268.438 (0) Dropbox chunked upload: 90.8 % uploaded (accSwFmisSW5korN-tk7NA, 2097152)
+0270.581 (0) Dropbox chunked upload: 100 % uploaded (accSwFmisSW5korN-tk7NA, 2310479)
+0272.134 (0) Recording as successfully uploaded: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-others.zip (14089dc0b2520a767f3659a8f27769d3)
+0272.137 (0) Deleting local file: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-others.zip: OK
+0272.138 (0) Dropbox: File upload success (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-others.zip): 2256 Kb in 10s (215 Kb/s)
+0272.371 (0) Dropbox quota usage: normal=3191.7 Mb, shared=4603.3 Mb, total=14080 Mb, available=6285 Mb
+0272.373 (0) Dropbox: Attempt to upload: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db.gz to: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db.gz
+0273.481 (0) Dropbox chunked upload: 100 % uploaded (4JxiJrcbZSGcfAreWnLBeg, 146894)
+0274.517 (0) Recording as successfully uploaded: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db.gz (20149e71568c475c1f3ad1e43ad154ce)
+0274.520 (0) Deleting local file: backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db.gz: OK
+0274.522 (0) Dropbox: File upload success (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db.gz): 143 Kb in 2s (66 Kb/s)
+0274.526 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=3, retain_db=3
+0274.536 (0) Number of backup sets in history: 3
+0274.537 (0) Examining backup set with datestamp: 1396149889 (Mar 30 2014 03:24:49)
+0274.538 (0) 1396149889: db: this set includes a database (backup_2014-03-30-0324_Nicole_K_Shaffer_abbb5293a2ca-db.gz); db count is now 1
+0274.540 (0) 1396149889: this backup set remains non-empty (1/1); will retain in history
+0274.541 (0) Examining backup set with datestamp: 1396135135 (Mar 29 2014 23:18:55)
+0274.544 (0) 1396135135: db: this set includes a database (backup_2014-03-29-2318_Nicole_K_Shaffer_4d2be23a55eb-db.gz); db count is now 2
+0274.546 (0) 1396135135: this backup set remains non-empty (1/1); will retain in history
+0274.548 (0) Examining backup set with datestamp: 1396118511 (Mar 29 2014 18:41:51)
+0274.551 (0) 1396118511: db: this set includes a database (backup_2014-03-29-1841_Nicole_K_Shaffer_1801593847db-db.gz); db count is now 3
+0274.553 (0) 1396118511: this backup set remains non-empty (1/1); will retain in history
+0274.559 (0) Retain: saving new backup history (sets now: 3) and finishing retain operation
+0274.569 (0) Resume backup (abbb5293a2ca, 0): finish run
+0274.572 (0) Decremented the semaphore (fd) by 1
+0274.575 (0) Semaphore (fd) unlocked
+0274.576 (0) There were no errors in the uploads, so the 'resume' event (1) is being unscheduled
+0274.582 (0) No email will/can be sent - the user has not configured an email address.
+0274.583 (0) The backup apparently succeeded and is now complete

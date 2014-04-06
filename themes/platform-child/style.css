@@ -1,0 +1,23 @@
+/*
+ Theme Name:   Platform for Nicole
+ Description:  Platform Child Theme
+ Author:       Nick Echols
+ Author URI:   http://nechols.com
+ Template:     platform
+ Version:      1.0.0
+ Text Domain:  platform-child
+*/
+
+@import url("../platform/style.css");
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
+
+.photo-description {
+
+font-family: century gothic, tahoma, sans-serif;
+		font-size: 11px;
+		line-height: 18px;
+		letter-spacing: .05em;
+		
+	}
