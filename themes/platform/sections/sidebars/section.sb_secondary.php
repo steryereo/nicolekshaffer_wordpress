@@ -16,16 +16,17 @@ class SecondarySidebar extends PageLinesSection {
 		$id = 'sidebar_secondary';
 	
 		
-		$settings = array(
+		$default_settings = array(
 			'description' 	=> 'The secondary widgetized sidebar for the theme.',
 			'workswith' 	=> array('sidebar1', 'sidebar2', 'sidebar_wrap'),
 			'folder' 		=> 'sidebars', 
 			'init_file' 	=> 'section.sb_secondary.php',
-			'icon'			=> CORE_IMAGES . '/admin/sidebar.png'
+			'icon'			=> PL_ADMIN_ICONS . '/sidebar.png'
 		);
 		
+		$settings = wp_parse_args( $registered_settings, $default_settings );
 
-	   parent::__construct($name, $id, $settings);    
+		parent::__construct($name, $id, $settings);    
    }
 
    function section_persistent() { 

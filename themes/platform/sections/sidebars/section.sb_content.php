@@ -22,7 +22,7 @@ class ContentSidebar extends PageLinesSection {
 			'workswith' 	=> array('main-default', 'main-posts', 'main-single', 'main-404'),
 			'folder' 		=> '', 
 			'init_file' 	=> 'fullwidth_sidebar.php', 
-			'icon'			=> CORE_IMAGES . '/admin/sidebar.png'
+			'icon'			=> PL_ADMIN_ICONS . '/sidebar.png'
 		);
 		
 

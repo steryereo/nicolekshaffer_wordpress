@@ -22,7 +22,7 @@ class PageLinesPostNav extends PageLinesSection {
 			'workswith' 	=> array('main-single', 'main-default'),
 			'folder' 		=> 'wp', 
 			'init_file' 	=> 'postnav', 
-			'icon'			=> CORE_IMAGES . '/admin/map.png'
+			'icon'			=> PL_ADMIN_ICONS . '/map.png'
 		);
 		
 
@@ -30,10 +30,12 @@ class PageLinesPostNav extends PageLinesSection {
    }
 
    function section_template() { ?>
+   	<?php pagelines_register_hook( 'pagelines_section_before_postnav' ); // Hook ?>
 		<div class="post-nav fix"> 
 			<span class="previous"><?php previous_post_link('%link') ?></span> 
 			<span class="next"><?php next_post_link('%link') ?></span>
 		</div>
+	<?php pagelines_register_hook( 'pagelines_section_after_postnav' ); // Hook ?>
 <?php }
 
 }

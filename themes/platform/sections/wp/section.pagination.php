@@ -22,7 +22,7 @@ class PageLinesPagination extends PageLinesSection {
 			'workswith' 	=> array('main-single', 'main-default', 'main-posts'),
 			'folder' 		=> 'wp', 
 			'init_file' 	=> 'pagination', 
-			'icon'			=> CORE_IMAGES . '/admin/pagination.png'
+			'icon'			=> PL_ADMIN_ICONS . '/pagination.png'
 		);
 		
 
@@ -30,7 +30,7 @@ class PageLinesPagination extends PageLinesSection {
    }
 
    function section_template() { ?>
-		<?php if(function_exists('wp_pagenavi') && show_posts_nav() && VPRO):?> 
+		<?php if(function_exists('wp_pagenavi') && show_posts_nav() && VPRO):?>
 			<?php wp_pagenavi(); ?>  
 		<?php elseif (show_posts_nav()) : ?>
 			<div class="page-nav-default fix">

@@ -10,6 +10,9 @@
 
 class PageLinesNav extends PageLinesSection {
 
+	static $nav_url;
+	static $nav_dir;
+
    function __construct( $registered_settings = array() ) {
 	
 		$name = __('Navigation', 'pagelines');
@@ -17,122 +20,83 @@ class PageLinesNav extends PageLinesSection {
 	
 		
 		$default_settings = array(
-			'type' => 'header',
-			'workswith' => array('header'),
-			'description' => 'Primary Site Navigation.',
-			'folder' => 'nav', 
-			'init_file' => 'nav.php',
-			'icon'			=> CORE_IMAGES . '/admin/map.png'
+			'name'			=> false,
+			'id'			=> false,
+			'type' 			=> 'header',
+			'workswith' 	=> array('header'),
+			'description' 	=> 'Primary Site Navigation.',
+			'folder' 		=> 'nav', 
+			'init_file' 	=> 'nav.php',
+			'icon'			=> PL_ADMIN_ICONS . '/map.png'
 		);
 		
 		$settings = wp_parse_args( $registered_settings, $default_settings );
+		
+		self::$nav_dir = PL_SECTIONS.'/nav';
+		self::$nav_url = SECTION_ROOT.'/nav';
 
-	   parent::__construct($name, $id, $settings);    
+		$name = ($settings['name']) ? $settings['name'] : $name;
+		$id = ($settings['id']) ? $settings['id'] : $id;
+
+		parent::__construct($name, $id, $settings);    
    }
 
 	// PHP that always loads no matter if section is added or not -- e.g. creates menus, locations, admin stuff...
 	function section_persistent(){
 		
-		register_nav_menus( array( 'primary' => __( 'Primary Navigation', 'pagelines' ) ) );
+		register_nav_menus( array( 'primary' => __( 'Primary Website Navigation', 'pagelines' ) ) );
 		
 		
 	}
 	
    function section_template() { 
 		global $post; 			?>
-	<div id="nav_row" class="fix">
-
-<?php 	
-		global $additional_menu_classes;
-		$additional_menu_classes = '';
-		if(pagelines_option('hidesearch')){ $additional_menu_classes .= ' nosearch';}
-		if(pagelines_option('enable_drop_down')){ $additional_menu_classes .= ' sf-menu';}
+	<div id="nav_row" class="main_nav fix">
+<?php 			
 		
-		function nav_fallback() {?>
+		if(function_exists('wp_nav_menu')){
 			
-			<?php global $additional_menu_classes;?>
-			<ul id="menu-nav" class="main-nav<?php echo $additional_menu_classes ;?>">
-
-			  	<?php wp_list_pages( 'title_li=&sort_column=menu_order&depth=3'); ?>
-			</ul><?php
-		}
-		if(function_exists('wp_nav_menu')):
-		wp_nav_menu( array('menu_class'  => 'main-nav'.$additional_menu_classes, 'container' => null, 'container_class' => '', 'depth' => 3, 'theme_location'=>'primary', 'fallback_cb'=>'nav_fallback') );
-		else:
-		nav_fallback();
-		endif;
+			wp_nav_menu( array('menu_class'  => 'main-nav'.pagelines_nav_classes(), 'container' => null, 'container_class' => '', 'depth' => 3, 'theme_location'=>'primary', 'fallback_cb'=>'pagelines_nav_fallback') );
+			
+		}else{ pagelines_nav_fallback(); }
 	
-		if(!pagelines_option('hidesearch')){
-			get_search_form(); 
-		}
+		if(!pagelines_option('hidesearch')){ get_search_form(); }
 		
 		?>
 	</div>
-	<?php if(!is_404() && isset($post) && is_object($post) && !pagelines_option('hide_sub_header') && ($post->post_parent || wp_list_pages("title_li=&child_of=".$post->ID."&echo=0"))):?>
-	<div id="subnav_row" class="fix">
-		<div id="subnav" class="fix">
-			<ul>
-				<?php 
-					if(count($post->ancestors)>=2){
-						$reverse_ancestors = array_reverse($post->ancestors);
-						$children = wp_list_pages("title_li=&depth=1&child_of=".$reverse_ancestors[0]."&echo=0&sort_column=menu_order");	
-					}elseif($post->post_parent){ $children = wp_list_pages("title_li=&depth=1&child_of=".$post->post_parent."&echo=0&sort_column=menu_order");
-					}else{	$children = wp_list_pages("title_li=&depth=1&child_of=".$post->ID."&echo=0&sort_column=menu_order");}
 
-					if ($children) { echo $children;}
-				?>
-			</ul>
-		</div><!-- /sub nav -->
-	</div>
-	<?php endif;?>
 <?php }
 
 	function section_styles(){
 		if(pagelines('enable_drop_down')){
-			wp_register_style('superfish', $this->base_url . '/superfish.css', array(), CORE_VERSION, 'screen');
+			wp_register_style('superfish', self::$nav_url . '/superfish.css', array(), CORE_VERSION, 'screen');
 		 	wp_enqueue_style( 'superfish' );
-		
-			if(pagelines('drop_down_shadow')){
-				wp_register_style('superfish-shadow', $this->base_url . '/superfish_shadow.css', array(), CORE_VERSION, 'screen');
-				wp_enqueue_style( 'superfish-shadow' );
-			}
-			
-			if(pagelines('drop_down_arrows')){
-				wp_register_style('superfish-arrows', $this->base_url . '/superfish_arrows.css', array(), CORE_VERSION, 'screen');
-				wp_enqueue_style( 'superfish-arrows' );
-			}
 		}
 	}
 	
 	function section_head(){
 		
-		if(pagelines('enable_drop_down')):?>
-	<script type="text/javascript"> 
-		/* <![CDATA[ */
-		var $j = jQuery.noConflict();
-		   $j(document).ready(function() { 
-		        $j('ul.sf-menu').superfish({ 
-		            delay:       100,		// one second delay on mouseout 
-		            speed:       'fast',	// faster animation speed 
-		            autoArrows:  true,		// disable generation of arrow mark-up 
-		            dropShadows: true		// disable drop shadows 
-		        }); 
-		    });
-		/* ]]> */
-	</script>			
-<?php endif;
+		$arrows = (pagelines_option('drop_down_arrows') == 'on') ? 1 : 0;
+		$shadows = (pagelines_option('drop_down_shadow') == 'on') ? 1 : 0;
+		
+		if(pagelines_option('enable_drop_down')): ?>
+		
+<script type="text/javascript"> /* <![CDATA[ */ jQuery(document).ready(function() {  jQuery('ul.sf-menu').superfish({ delay: 100, speed: 'fast', autoArrows:  <?php echo $arrows;?>, dropShadows: <?php echo $shadows;?> });  }); /* ]]> */ </script>			
+
+<?php 
+		endif;
 }
 
 	function section_scripts() {  
 		
 		return array(
 				'superfish' => array(
-						'file' => $this->base_url . '/superfish.js',
+						'file' => self::$nav_url . '/superfish.js',
 						'dependancy' => array('jquery'), 
 						'location' => 'footer'
 					), 
 				'bgiframe' => array(
-					'file' => $this->base_url . '/jquery.bgiframe.min.js',
+					'file' => self::$nav_url . '/jquery.bgiframe.min.js',
 					'dependancy' => array('jquery', 'superfish'), 
 					'location' => 'footer'
 					),
@@ -179,7 +143,7 @@ class PageLinesNav extends PageLinesSection {
 									'exp' => 'Checking this option will create arrows for the drop down menus'
 									)),
 							'inputlabel' => 'Select Which Drop Down Options To Show',
-							'title' => 'Drop Down Navigation Options',						
+							'title' => 'Drop Down Navigation - Nav and BrandNav Section',						
 							'shortexp' => 'Select Which To Show',
 							'exp' => "Enable drop downs and choose the options you would like to show" 
 								 
@@ -188,20 +152,11 @@ class PageLinesNav extends PageLinesSection {
 							'version' => 'pro',
 							'default' => false,
 							'type' => 'check',
-							'inputlabel' => 'Hide search on top of theme?',
-							'title' => 'Hide Search',						
-							'shortexp' => 'Remove the search field from the top of theme (in sub header and top of sidebar)',
-							'exp' => 'Removes the search field from the sub nav and sidebar.'
+							'inputlabel' => 'Hide search field?',
+							'title' => 'Hide Search - Nav Section',						
+							'shortexp' => 'Remove the search field from the nav section',
+							'exp' => 'Removes the search field from the PageLines Navigation Section.'
 						), 
-					'hide_sub_header' => array(
-							'version' => 'pro',
-							'default' => false,
-							'type' => 'check',
-							'inputlabel' => 'Hide Sub Header?',
-							'title' => 'Hide Sub Navigation',						
-							'shortexp' => 'Removes the sub header that includes the subnav.',
-							'exp' => 'This option removes the sub navigation generated when top-level pages are selected that have child pages.'
-						),
 				
 				);
 

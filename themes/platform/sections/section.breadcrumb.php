@@ -19,7 +19,7 @@ class PageLinesBreadcrumb extends PageLinesSection {
 		$default_settings = array(
 			'description' 	=> 'Displays a breadcrumb navigation section',
 			'workswith' 	=> array('main','header'),
-			'icon'			=> CORE_IMAGES.'/admin/ui-breadcrumb.png', 
+			'icon'			=> PL_ADMIN_ICONS . '/ui-breadcrumb.png', 
 		);
 		
 		$settings = wp_parse_args( $registered_settings, $default_settings );
@@ -29,7 +29,7 @@ class PageLinesBreadcrumb extends PageLinesSection {
 
    function section_template() { 
 		?>
-			<div class="breadcrumb">
+			<div class="breadcrumb subtext">
 <?php
 				if(function_exists('bcn_display')){
 					if(pagelines_option('breadcrumb_no_link')){

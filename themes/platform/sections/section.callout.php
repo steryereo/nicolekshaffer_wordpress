@@ -21,7 +21,7 @@ class PageLinesCallout extends PageLinesSection {
 			'workswith' 	=> array('content'),
 			'folder' 		=> '', 
 			'init_file' 	=> 'callout.php', 
-			'icon'			=> CORE_IMAGES . '/admin/speaker.png'
+			'icon'			=> PL_ADMIN_ICONS . '/speaker.png'
 		);
 		
 		$settings = wp_parse_args( $registered_settings, $default_settings );
@@ -37,7 +37,7 @@ class PageLinesCallout extends PageLinesSection {
 			<h2 class="callout_head <?php if(!pagelines('pagelines_callout_image')):?>noimage<?php endif;?>">
 				<?php print_pagelines_option('pagelines_callout_header', __('This is the "Callout Section"','pagelines') );?>
 			</h2>
-			<div class="callout_copy">
+			<div class="callout_copy subhead">
 				<?php print_pagelines_option('pagelines_callout_subheader', __('Perfect for a call to action or a special offer.','pagelines') );?>
 			</div>
 			</div>
@@ -45,8 +45,8 @@ class PageLinesCallout extends PageLinesSection {
 		
 		<?php if(pagelines_option('pagelines_callout_image')):?>
 			<div class="callout_image">
-				<a href="<?php echo pagelines_option('pagelines_callout_link');?>">
-					<img src="<?php echo pagelines_option('pagelines_callout_image');?>" alt=""/>
+				<a href="<?php echo pagelines_option('pagelines_callout_link');?>" >
+					<img src="<?php echo pagelines_option('pagelines_callout_image');?>" />
 				</a>
 			</div>
 		<?php endif;?>
@@ -73,7 +73,7 @@ class PageLinesCallout extends PageLinesSection {
 
 					),				
 					'pagelines_callout_image' => array(
-						'default' 		=> THEME_IMAGES.'/callout_default.png',
+						'default' 		=> PL_IMAGES.'/callout_default.png',
 						'type' 			=> 'image_upload',
 						'imagepreview' 	=> '270',
 						'inputlabel' 	=> 'Upload custom image',

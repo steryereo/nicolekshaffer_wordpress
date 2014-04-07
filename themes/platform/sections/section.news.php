@@ -21,7 +21,7 @@ class PageLinesNews extends PageLinesSection {
 			'workswith' 	=> array('content'),
 			'folder' 		=> 'wp', 
 			'init_file' 	=> 'news.php', 
-			'icon'			=> CORE_IMAGES . '/admin/newspaper.png', 
+			'icon'			=> PL_ADMIN_ICONS . '/newspaper.png', 
 			'version'		=> 'pro'
 		);
 		

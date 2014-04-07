@@ -20,7 +20,7 @@ class PageLinesBranding extends PageLinesSection {
 			'type' 				=> 'header',
 			'workswith'		 	=> array('header'),
 			'description' 		=> 'Shows the main site logo or the site title and description.',
-			'icon'				=> CORE_IMAGES . '/admin/megaphone.png'
+			'icon'				=> PL_ADMIN_ICONS . '/megaphone.png'
 		);
 		
 

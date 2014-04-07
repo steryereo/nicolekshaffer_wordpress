@@ -17,17 +17,19 @@ class FullWidthSidebar extends PageLinesSection {
 		$this->handle = "Full Width Sidebar";
 	
 		
-		$settings = array(
+		
+		$default_settings = array(
 			'description' 	=> __('A widgetized full width sidebar. This sidebar will span the entire width of your website.', 'pagelines'),
 			'workswith' 	=> array('templates', 'footer', 'morefoot'),
 			'folder' 		=> '', 
 			'init_file' 	=> 'fullwidth_sidebar.php', 
-			'icon'			=> CORE_IMAGES . '/admin/sidebar.png',
+			'icon'			=> PL_ADMIN_ICONS . '/sidebar.png',
 			'version'		=> 'pro'
 		);
 		
 
-	   parent::__construct($name, $id, $settings);    
+		$settings = wp_parse_args( $registered_settings, $default_settings );
+		parent::__construct($name, $id, $settings);    
    }
 
    function section_persistent() { 

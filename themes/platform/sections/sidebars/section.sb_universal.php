@@ -19,8 +19,7 @@ class UniversalSidebar extends PageLinesSection {
 		$settings = array(
 			'description' 	=> 'The universal widgetized sidebar, works in most areas.',
 			'workswith' 	=> array('sidebar1', 'sidebar2', 'sidebar_wrap', 'templates', 'main', 'header', 'morefoot'),
-			'icon'			=> CORE_IMAGES . '/admin/sidebar.png', 
-			'version'		=> 'pro'
+			'icon'			=> PL_ADMIN_ICONS . '/sidebar.png', 
 		);
 		
 

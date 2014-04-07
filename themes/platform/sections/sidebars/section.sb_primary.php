@@ -22,7 +22,7 @@ class PrimarySidebar extends PageLinesSection {
 			'workswith' 	=> array('sidebar1', 'sidebar2', 'sidebar_wrap'),
 			'folder' 		=> 'sidebars', 
 			'init_file' 	=> 'sidebar_primary.php', 
-			'icon'			=> CORE_IMAGES . '/admin/sidebar.png'
+			'icon'			=> PL_ADMIN_ICONS . '/sidebar.png'
 		);
 		
 

@@ -20,8 +20,7 @@ class PageLinesHighlight extends PageLinesSection {
 			'description' 	=> 'Adds a highlight section with a splash image, and optional header/subheader text. Set up on individual pages/posts.',
 			'workswith' 	=> array('templates', 'main', 'header', 'morefoot'),
 			'failswith'		=> array('posts', '404'),
-			'icon'			=> CORE_IMAGES . '/admin/highlight.png', 
-			'version'		=> 'pro'
+			'icon'			=> PL_ADMIN_ICONS . '/highlight.png', 
 		);
 		
 		$settings = wp_parse_args( $registered_settings, $default_settings );
@@ -33,32 +32,33 @@ class PageLinesHighlight extends PageLinesSection {
 		/*
 			Create meta fields for the page template when using the Feature Template
 		*/
-			$meta_array = array(
+		
+			
+			$metatab_array = array(
 
 					'_highlight_head' => array(
-						'version' => 'pro',
-						'type' => 'text_big',		
-						'inputlabel' => 'Highlight Header Text (Optional)',
-						'exp' => 'The main header text for the highlight section.'
+						'type' 		=> 'text',
+						'size'		=> 'big',		
+						'title' 	=> 'Highlight Header Text (Optional)',
+						'desc' 		=> 'Add the main header text for the highlight section.'
 					),
 					'_highlight_subhead' => array(
-						'version' => 'pro',
-						'type' => 'text_big',		
-						'inputlabel' => 'Highlight Subheader Text (Optional)',
-						'exp' => 'The main subheader text for the highlight section.'
+						'type' 		=> 'text',
+						'size'		=> 'big',		
+						'title' 	=> 'Highlight Subheader Text (Optional)',
+						'desc' 		=> 'Add the main subheader text for the highlight section.'
 					),
 					
 					'_highlight_splash' => array(
-						'version' => 'pro',
-						'type' => 'image_upload',		
-						'inputlabel' => 'Highlight Splash Image (Optional)',
-						'exp' => 'Upload an image to use in the highlight section (if activated)'
+						'type' 		=> 'image_upload',	
+						'label'		=> 'Upload Splash Image',	
+						'title' 	=> 'Highlight Splash Image (Optional)',
+						'desc' 		=> 'Upload an image to use in the highlight section (if activated)'
 					),
 					'_highlight_splash_position' => array(
-						'version' => 'pro',
-						'type' => 'select',		
-						'inputlabel' => 'Highlight Image Position',
-						'exp' => 'Select the position of the highlight image.',
+						'type' 		=> 'select',		
+						'title' 	=> 'Highlight Image Position',
+						'desc' 		=> 'Select the position of the highlight image.',
 						'selectvalues'=> array(
 							'top'			=> array( 'name' => 'Top' ),
 							'bottom'	 	=> array( 'name' => 'Bottom' )
@@ -66,21 +66,14 @@ class PageLinesHighlight extends PageLinesSection {
 					),
 
 				);
-			$meta_settings = array(
-					'id' => 'highlight-template-meta',
-					'name' => THEMENAME." Highlight Section Options",
-					'posttype' => 'page'
-				);
-
-			$this->meta_options =  new PageLinesMetaOptions($meta_array, $meta_settings);
 			
-			$meta_settings = array(
-					'id' => 'highlight-template-meta',
-					'name' => THEMENAME." Highlight Section Options",
-					'posttype' => 'post'
+			$metatab_settings = array(
+					'id' => 'highlight_meta',
+					'name' => "Highlight Section",
+					'icon' => $this->icon
 				);
-
-			$this->meta_options =  new PageLinesMetaOptions($meta_array, $meta_settings);
+			
+			register_metatab($metatab_settings, $metatab_array);
 	}
 
 	function section_template() { 
@@ -108,7 +101,7 @@ class PageLinesHighlight extends PageLinesSection {
 			<?php endif;?>
 	
 			<?php if($h_subhead):?> 
-				<h3 class="highlight-subhead">
+				<h3 class="highlight-subhead subhead">
 					<?php echo $h_subhead; ?>
 				</h3>
 			<?php endif;?>

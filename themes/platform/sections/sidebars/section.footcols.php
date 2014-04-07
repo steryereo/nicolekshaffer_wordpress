@@ -16,17 +16,17 @@ class PageLinesFootCols extends PageLinesSection {
 		$id = 'footcols';
 	
 		
-		$settings = array(
+		$default_settings = array(
 			'type' 			=> 'standard',
 			'description' 	=> 'Displays a 5 column sidebar in the footer that can be setup to use widgets or theme options. Add widgets in the widgets panel to activate widget mode.',
 			'workswith' 	=> array('footer'),
 			'folder' 		=> '', 
 			'init_file' 	=> 'footcols.php', 
-			'icon'			=> CORE_IMAGES . '/admin/column.png'
+			'icon'			=> PL_ADMIN_ICONS . '/column.png'
 		);
 		
-
-	   parent::__construct($name, $id, $settings);    
+		$settings = wp_parse_args( $registered_settings, $default_settings );
+		parent::__construct($name, $id, $settings);    
    }
 
 	function section_persistent(){
@@ -40,8 +40,7 @@ class PageLinesFootCols extends PageLinesSection {
 		));
 		
 		register_nav_menus( array(
-			'footer_nav' => __( 'Footer Page Navigation', 'pagelines' ),
-			'footer_social' => __( 'Footer Alternate Links', 'pagelines' ),
+			'footer_nav' => __( 'Page Navigation in Footer Columns', 'pagelines' )
 		) );
 	
 		
@@ -70,7 +69,7 @@ class PageLinesFootCols extends PageLinesSection {
 					<div class="dcol_5 dcol">
 						<div class="dcol-pad">
 							<h3 class="widget-title"><?php _e('Pages','pagelines');?></h3>
-								<?php wp_nav_menu( array('theme_location'=>'footer_nav', 'depth' => 1) ); ?>
+								<?php wp_nav_menu( array('menu_class' => 'footer-links list-links', 'theme_location'=>'footer_nav', 'depth' => 1) ); ?>
 
 						</div>
 					</div>
@@ -78,16 +77,14 @@ class PageLinesFootCols extends PageLinesSection {
 						<div class="dcol-pad">
 							<h3 class="widget-title"><?php _e('The Latest','pagelines');?></h3>
 								<ul class="latest_posts">
-								<?php foreach(get_posts('numberposts=1&offset=0') as $key => $post): 
+								<?php foreach(get_posts('numberposts=1&offset=0') as $key => $post):
 										setup_postdata($post);?>
-
 										<li class="list-item fix">
 											<div class="list_item_text">
 												<h5><a class="list_text_link" href="<?php echo get_permalink( $post->ID ); ?>"><span class="list-title"><?php echo $post->post_title; ?></span></a></h5>
-												<div class="list-excerpt"><?php echo custom_trim_excerpt(get_the_excerpt(), 12); ?></div>
+												<div class="list-excerpt"><?php echo ( !is_404() ) ? custom_trim_excerpt(get_the_excerpt(), 12) : ''; ?></div>
 											</div>
 										</li>
-
 								<?php endforeach;?></ul>
 						</div>
 					</div>

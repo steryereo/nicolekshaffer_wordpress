@@ -21,7 +21,7 @@ class PageLinesSimpleFooterNav extends PageLinesSection {
 			'workswith' => array('footer'),
 			'description' => 'Footer Site Navigation.',
 	
-			'icon'			=> CORE_IMAGES . '/admin/map.png'
+			'icon'			=> PL_ADMIN_ICONS . '/map.png'
 		);
 		
 		$settings = wp_parse_args( $registered_settings, $default_settings );
@@ -30,7 +30,7 @@ class PageLinesSimpleFooterNav extends PageLinesSection {
    }
 
 	function section_persistent(){
-		register_nav_menus( array( 'footer_nav_simple' => __( 'Simple Footer Navigation', 'pagelines' ) ) );
+		register_nav_menus( array( 'footer_nav_simple' => __( 'Page Navigation in Simple Footer Section', 'pagelines' ) ) );
 	}
 	
 	

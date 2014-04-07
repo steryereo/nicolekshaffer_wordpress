@@ -19,7 +19,7 @@ class PageLinesPostAuthor extends PageLinesSection {
 		$settings = array(
 			'description' 	=> 'Adds information about the author of a blog post or page. Add user information under "users" in the admin.',
 			'workswith' 	=> array('main-single', 'main-default'),
-			'icon'			=> CORE_IMAGES . '/admin/author.png'
+			'icon'			=> PL_ADMIN_ICONS . '/author.png'
 		);
 		
 
@@ -33,7 +33,7 @@ class PageLinesPostAuthor extends PageLinesSection {
 		
 		<div class="author-info">
 			<div class="author-thumb">
-				<?php echo get_avatar(get_the_author_meta('email', $post->post_author), $size = '80', $default = CORE_IMAGES. '/avatar_default.gif' ); ?>
+				<?php echo get_avatar(get_the_author_meta('email', $post->post_author), $size = '80', $default = PL_IMAGES . '/avatar_default.gif' ); ?>
 			</div>
 			<small class="subtext"><?php _e('About The Author', 'pagelines');?></small>
 			<h2>

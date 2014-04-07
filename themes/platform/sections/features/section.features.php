@@ -4,7 +4,7 @@
 	Section: PageLines Features
 	Author: Andrew Powers
 	Description: Creates a feature slider and custom post type
-	Version: 1.0.0
+	Version: 1.0.1
 	
 */
 
@@ -16,11 +16,11 @@ class PageLinesFeatures extends PageLinesSection {
 		$id = 'feature';
 		
 		$this->tax_id = 'feature-sets';
-		$section_root_url = $registered_settings['base_url'];
+		$this->section_root_url = $registered_settings['base_url'];
 		
 		$default_settings = array(
 			'description'	=> 'This is your main feature slider.  Add feature text and media through the admin panel.',
-			'icon'			=> $section_root_url.'/features.png',
+			'icon'			=> $this->section_root_url.'/features.png',
 			'version'		=> 'pro',	
 		);
 		
@@ -38,7 +38,7 @@ class PageLinesFeatures extends PageLinesSection {
 					'label' 			=> __('Features', 'pagelines'),  
 					'singular_label' 	=> __('Feature', 'pagelines'),
 					'description' 		=> 'For setting slides on the feature page template',
-					'taxonomies'		=> array('feature-sets')
+					'taxonomies'		=> array('feature-sets'), 
 				);
 			$taxonomies = array(
 				'feature-sets' => array(	
@@ -65,11 +65,11 @@ class PageLinesFeatures extends PageLinesSection {
 		/*
 			Create meta fields for the post type
 		*/
-			$this->meta_array = array(
+			$type_meta_array = array(
 					'feature-style' => array(
-							'type' => 'select',					
-							'inputlabel' => 'Feature Text Position',
-							'exp' => 'Select the type of feature style you would like to be shown. E.g. show text on left, right, bottom or not at all (full width)...',
+							'type' 	=> 'select',					
+							'title' => 'Feature Text Position',
+							'desc' 	=> 'Select the type of feature style you would like to be shown. E.g. show text on left, right, bottom or not at all (full width)...',
 							'selectvalues' => array(
 								'text-left'		=> 'Text On Left',
 								'text-right' 	=> 'Text On Right',
@@ -78,15 +78,15 @@ class PageLinesFeatures extends PageLinesSection {
 							),
 						),
 					'feature-background-image' => array(
-							'exp' 			=> 'Upload an image for the feature background.',
-							'inputlabel' 	=> 'Feature Background Image',
+							'desc' 			=> 'Upload an image for the feature background.',
+							'title' 		=> 'Feature Background Image',
 							'type' 			=> 'image_upload'
 						),
 					
 					'feature-design' => array(
 							'type'			=> 'select',
-							'exp' 			=> 'Select the design style you would like this feature to have (e.g. default background color, text color, overlay? etc...).',
-							'inputlabel' 	=> 'Feature Design Style',
+							'desc' 			=> 'Select the design style you would like this feature to have (e.g. default background color, text color, overlay? etc...).',
+							'title' 	=> 'Feature Design Style',
 							'selectvalues' => array(
 								'fstyle-darkbg-overlay' => 'White Text - Dark Feature Background - Transparent Text Overlay (Default)',
 								'fstyle-lightbg'		=> 'Black Text - Light Feature Background with Border - No Overlay',
@@ -96,184 +96,266 @@ class PageLinesFeatures extends PageLinesSection {
 						),
 						
 					'feature-media-image' => array(
-							'version' => 'pro',
-							'type' => 'image_upload',					
-							'inputlabel' => 'Feature Media Image',
-							'exp' => 'Upload an image of the appropriate size for the feature media area.'
+							'version' 		=> 'pro',
+							'type' 			=> 'image_upload',					
+							'title' 		=> 'Feature Media Image',
+							'label'			=> 'Upload An Image For The Feature Media Area',
+							'desc' 			=> 'Upload an image of the appropriate size for the feature media area.'
 						),
 					'feature-media' => array(
-							'version' => 'pro',
-							'type' => 'textarea',					
-							'inputlabel' => 'Feature Media HTML (Youtube, Flash etc...)',
-							'exp' => 'Feature Page Media HTML or Embed Code.'
+							'version' 		=> 'pro',
+							'type' 			=> 'textarea',					
+							'title' 		=> 'Feature Media HTML (Youtube, Flash etc...)',
+							'label'			=> 'Enter HTML For Feature Media Area',
+							'desc'	 		=> 'Feature Page Media HTML or Embed Code.'
 						),
 					'feature-thumb' => array(
-							'exp' 			=> 'Add thumbnails to your post for use in thumb navigation. Create an image 50px wide by 30px tall and upload here.',
-							'inputlabel' 	=> 'Feature Thumb (50px by 30px)',
+							'desc' 			=> 'Add thumbnails to your post for use in thumb navigation. Create an image 50px wide by 30px tall and upload here.',
+							'title' 		=> 'Feature Thumb (50px by 30px)',
+							'label'			=> 'Upload Feature Thumbnail (Thumbs Mode)',
 							'type' 			=> 'image_upload'
 						),
 					'feature-link-url' => array(
-							'exp' 			=> 'Adding a URL here will add a link to your feature slide',
-							'inputlabel' 	=> 'Feature Link URL',
+							'desc' 			=> 'Adding a URL here will add a link to your feature slide',
+							'title' 		=> 'Feature Link URL',
+							'label'			=> 'Enter Feature Link URL',
 							'type' 			=> 'text'
 						),
 					'feature-link-text' => array(
 							'default'		=> 'More',
-							'exp' 			=> 'Enter the text you would like in your feature link',
-							'inputlabel' 	=> 'Link Text',
-							'type' 			=> 'text'
+							'desc' 			=> 'Enter the text you would like in your feature link',
+							'title' 		=> 'Link Text',
+							'label'			=> 'Enter Feature Link Text',
+							'type' 			=> 'text', 
+							'size'			=> 'small'
 						),
 					'feature-name' => array(
 							'default'		=> '',
-							'exp' 			=> 'Enter the title you would like to appear when the feature nav mode is set to feature names',
-							'inputlabel' 	=> 'Navigation Label',
+							'desc' 			=> 'Enter the title you would like to appear when the feature nav mode is set to feature names',
+							'title' 		=> 'Navigation Label',
+							'label'			=> 'Enter Feature Navigation Text (Names Nav Mode)',
 							'type' 			=> 'text'
 						),
 		
 			);
 			
-			if(pagelines('feature_source') == 'posts'){
-				$post_types = array($this->id, 'post');
-			} else { $post_types = array($this->id); }
+			// Add options for correct post type.
+			$post_types = (pagelines('feature_source') == 'posts') ? array($this->id, 'post') : array($this->id);
 			
-			$this->meta_settings = array(
-					'id' => 'feature-meta',
-					'name' => THEMENAME." Feature Options",
-					'posttype' => $post_types
+			$type_metapanel_settings = array(
+					'id' 		=> 'feature-metapanel',
+					'name' 		=> "Feature Setup Options",
+					'posttype' 	=> $post_types, 
+					'hide_tabs'	=> true
 				);
 			
-			$this->meta_options =  new PageLinesMetaOptions($this->meta_array, $this->meta_settings);
+			$type_meta_panel =  new PageLinesMetaPanel( $type_metapanel_settings );
+			
+			
+			$type_metatab_settings = array(
+				'id' 		=> 'feature-type-metatab',
+				'name' 		=> "Feature Setup Options",
+				'icon' 		=> $this->icon,
+			);
+			
+			$type_meta_panel->register_tab( $type_metatab_settings, $type_meta_array );
+			
 			
 			/*
-				Create meta fields for the page template when using the Feature Template
-			*/
-				$meta_array = array(
-
+				Do Page/Post Options
+			*/	
+				$page_metatab_array = array(
 						'feature_items' => array(
-							'version' => 'pro',
-							'type' => 'text',					
-							'inputlabel' => 'Number of Feature Slides',
-							'exp' => 'Enter the max number of feature slides to show on this page. Note: If left blank, the number of posts selected under reading settings in the admin will be used.'
+							'version' 	=> 'pro',
+							'type' 		=> 'text',	
+							'size'		=> 'small', 				
+							'title' 	=> 'Number of Feature Slides',
+							'desc' 		=> 'Enter the max number of feature slides to show on this page. Note: If left blank, the number of posts selected under reading settings in the admin will be used.'
 						),
 						'feature_set' => array(
-							'version' => 'pro',
-							'type' => 'select_taxonomy',
-							
+							'version' 	=> 'pro',
+							'type' 		=> 'select_taxonomy',
 							'taxonomy_id'	=> "feature-sets",				
-							'inputlabel' => 'Select Feature Set To Show',
-							'exp' => 'If you are using the feature section, select the feature set you would like to show on this page.'
+							'title' 	=> 'Select Feature Set To Show',
+							'desc' 		=> 'If you are using the feature section, select the feature set you would like to show on this page.'
 						)
-
-					);
-				$meta_settings = array(
-						'id' => 'feature-template-meta',
-						'name' => THEMENAME." Feature Section Options",
-						'posttype' => 'page'
 					);
 
-				$this->meta_options =  new PageLinesMetaOptions($meta_array, $meta_settings);
+				$metatab_settings = array(
+						'id' => 'feature_meta',
+						'name' => "Feature Slider Section",
+						'icon' => $this->icon
+					);
+
+				register_metatab($metatab_settings, $page_metatab_array);
 
 	}
 
 	function section_head() {   
-		
-	// Get the features from post type
 
-	$feature_posts = $this->get_feature_posts();	
+		global $pagelines_ID;
+
+		// Get the features from post type
+		$f = $this->pagelines_features_set(); 	
+	
+		$feffect = (pagelines_option('feffect')) ? pagelines_option('feffect') : 'fade';
+		$timeout = (pagelines_option('timeout')) ? pagelines_option('timeout') : 0;
+		$speed   = (pagelines_option('fspeed')) ? pagelines_option('fspeed') : 1500;
+		$fsync   = (pagelines_option('fremovesync')) ? 0 : 1;
+		$autostop = ( has_filter('pagelines_feature_autostop') ) ? ', autostop: 1, autostopCount: ' . apply_filters( 'pagelines_feature_autostop', 0) : '';
 	
 ?><script type="text/javascript">
-		/* <![CDATA[ */
-			var $j = jQuery.noConflict();
-			$j(document).ready(function () {
+/* <![CDATA[ */
+	var $j = jQuery.noConflict();
+	$j(document).ready(function () {
+<?php 
+	//Feature Cycle Setup
+	printf( "\$j('#cycle').cycle({fx: '%s', sync: %d, timeout: %d, speed: %d, cleartype: true, cleartypeNoBg: true, pager: 'div#featurenav'%s});", $feffect, $fsync, $timeout, $speed, $autostop );
+	
+	$this->_js_feature_loop($f);
 
-			//Feature Cycle Setup	
-					$j('#cycle').cycle({ 
-					    fx: '<?php if(pagelines('feffect')):?><?php echo pagelines('feffect');?><?php else:?>fade<?php endif;?>',
-						sync: <?php if(pagelines('fremovesync')):?>0<?php else:?>1<?php endif;?>,
-						timeout: <?php if(pagelines('timeout')):?><?php echo pagelines('timeout');?><?php else:?>0<?php endif;?>,
-					    speed:  <?php if(pagelines('fspeed')):?><?php echo pagelines('fspeed');?><?php else:?>1500<?php endif;?>, 
-						cleartype:true,
-		    			cleartypeNoBg:true,
-						pager: 'div#featurenav'
-					 });<?php
-					
-				if(pagelines('feature_nav_type') == 'names'):?>	
-				//Overide page numbers on cycle feature with custom text
-					$j("div#featurenav").children("a").each(function() {
-						<?php $count = 1;?>
-						<?php foreach($feature_posts as $feature_post => $feature_info):?>
-								if($j(this).html() == "<?php echo $count;?>") { if($j(this).html("<?php 
-									if(get_post_meta($feature_info->ID,'feature-name',true)){
-										echo get_post_meta($feature_info->ID,'feature-name',true);
-									} else echo 'feature ' . $count;
-								?>"));}
-								
-						<?php $count++; endforeach;?>
-					});
-				<?php elseif(pagelines('feature_nav_type') == 'thumbs'):?>	
-				//Overide page numbers on cycle feature with custom text
-					$j("div#featurenav").children("a").each(function() {
-						<?php $count = 1;?>
-						<?php foreach($feature_posts as $feature_post => $feature_info):?>
-								if($j(this).html() == "<?php echo $count;?>") {
-									$j(this).html('<span class="nav_thumb" style="background:#fff url(<?php echo get_post_meta( $feature_info->ID, "feature-thumb", true); ?>)"><span class="nav_overlay">&nbsp;</span></span>');}
-								<?php $count += 1;?>
-						<?php endforeach;?>
-					});
-				<?php elseif(pagelines('feature_nav_type') == 'arrows'):?>	
-				//Overide page numbers on cycle feature with arrows
-					$j(function() {
-    					$j('#arrownav a span').each(function() {
-        					eval($j(this).text());
-    					});
-					});
+	if(pagelines('feature_playpause')):?>	
+		// Play Pause
+		$j('.playpause').click(function() { 
+			if ($j('.playpause').hasClass('pause')) {
+				$j('#cycle').cycle('pause');
+			 	$j('.playpause').removeClass('pause').addClass('resume');
+			} else {
+			   	$j('.playpause').removeClass('resume').addClass('pause');
+			    $j('#cycle').cycle('resume', true); 	
+			}
+		});
+	<?php endif;?>
+	
+});
 
-				<?php endif;
-				
-				if(pagelines('feature_playpause')):?>	
-				// Play Pause
-					$j('.playpause').click(function() { 
-						if ($j(this).hasClass('pause')) {
-							$j('#cycle').cycle('pause');
-						 	$j(this).removeClass('pause').addClass('resume');
-						} else {
-						   	$j(this).removeClass('resume').addClass('pause');
-						    $j('#cycle').cycle('resume'); 	
-						}
-
-					});
-				<?php endif;?>
-
-			});
-		/* ]]> */
+/* ]]> */
 </script>
 <?php }
+
+function _js_feature_loop($fposts = array()){
 	
-   function section_template() {        
+	$count = 1;
+	$link_js = '';
+	$fmode = pagelines_option('feature_nav_type');
+	
+	
+		foreach($fposts as $fid => $f){
+	
+			$feature_name = (get_post_meta( $f->ID,'feature-name', true )) ? get_post_meta( $f->ID,'feature-name', true ): $f->post_name;
+			$feature_thumb = pagelines_option('feature-thumb', $f->ID);
+		
+			if($fmode == 'names' || $fmode == 'thumbs'){
+				if($fmode == 'names')
+					$replace_value = $feature_name;
+			
+				elseif ($fmode == 'thumbs')
+					$replace_value = sprintf("<span class='nav_thumb' style='background:#fff url(%s);'><span class='nav_overlay'>&nbsp;</span></span>", $feature_thumb);
+		
+				$replace_js = sprintf('$j(this).html("%s");', $replace_value );
+			} else {
+				$replace_js = '';
+			}
+			
+			
+			$link_title = sprintf('$j(this).attr("title", "%s");', $feature_name );
+			
+		
+			$link_js .= sprintf('if($j(this).html() == "%s") { %s %s }', $count, $link_title, $replace_js);
+		
+			$count++; 
+		}
+	
+		printf('$j("div#featurenav").children("a").each(function() { %s });', $link_js);
+
+}
+
+function section_template() {    
+
+	$f = $this->pagelines_features_set(); 
+
+
+	// $this->set set in pagelines_feature_set, better way to do this?
+	$this->draw_features($f, $this->set);
+
+}
+
+function pagelines_features_set(){
+	
+	global $post; 
+	global $pagelines_ID;
+	
+	if( get_pagelines_meta('feature_set', $pagelines_ID) )
+		$this->set = get_post_meta($pagelines_ID, 'feature_set', true);
+	elseif (pagelines_option('feature_default_tax'))
+		$this->set = pagelines_option('feature_default_tax');
+	else 
+		$this->set = null;
+	
+	$limit = (pagelines_option('feature_items', $pagelines_ID)) ? pagelines_option('feature_items', $pagelines_ID) : null;
+		
+	$source = (pagelines_option('feature_source') == 'posts') ? 'posts' : 'customtype';	
+		
+	$f = $this->load_pagelines_features($this->set, $limit, $source); 
+	
+	return $f;	
+		
+}
+
+function load_pagelines_features( $set = null, $limit = null, $source = null){
+	$query = array();
+	
+	$query['orderby'] 	= 'ID'; 
+	
+	if($source == 'posts'){
+		
+		$query['post_type'] = 'post';
+		
+		if(pagelines_option('feature_category'))
+			$query['cat'] = pagelines_option('feature_category');
+
+	} else {
+		
+		$query['post_type'] = 'feature'; 
+		
+		if(isset($set)) 
+			$query['feature-sets'] = $set;
+		
+	}
+	
+	if(isset($limit)) 
+		$query['showposts'] = $limit; 
+
+	$q = new WP_Query($query);
+	
+	if(is_array($q->posts)) 
+		return $q->posts;
+	else 
+		return array();
+}
+
+function draw_features($f, $class) {     
+	
+	global $post; 
+	global $pagelines_layout; 
+	$current_page_post = $post;
+	   
 ?>		
-	<div id="feature_slider" class="fix">
+	<div id="feature_slider" class="<?php echo $class;?> fix">
 		<div id="feature-area">
 			<div id="cycle">
 			<?php
-					global $post; 
-					global $pagelines_layout; 
-					$current_page_post = $post;
-					
-	
-				$feature_posts = $this->get_feature_posts();
-				if(!empty($feature_posts) && is_array($feature_posts)):
-					foreach($feature_posts as $post) : 
+				
+				if(!empty($f)):
+					foreach($f as $post) : 
 						
 						// Setup For Std WP functions
 						setup_postdata($post); 
 						
 						// Get Feature Style
-						if(get_post_meta($post->ID, 'feature-style', true)) $feature_style = get_post_meta($post->ID, 'feature-style', true);
-						else $feature_style = 'text-left';
+						$feature_style = (get_post_meta($post->ID, 'feature-style', true)) ? get_post_meta($post->ID, 'feature-style', true) : 'text-left';
 						
-						if(get_post_meta($post->ID, 'feature-link-text', true)) {
-							$flink_text = get_post_meta($post->ID, 'feature-link-text', true); 
-						}else $flink_text = __('More', 'pagelines');
+						$flink_text = ( get_post_meta($post->ID, 'feature-link-text', true) ) ? __( get_post_meta($post->ID, 'feature-link-text', true) ) : __('More', 'pagelines');
 					
 						//Get the Thumbnail URL
 						$feature_background_image = get_post_meta($post->ID, 'feature-background-image', true);
@@ -286,7 +368,7 @@ class PageLinesFeatures extends PageLinesSection {
 									<?php pagelines_register_hook( 'pagelines_feature_before', $this->id ); // Hook ?>
 									<div class="fcontent <?php if(get_post_meta($post->ID, 'fcontent-bg', true)) echo get_post_meta($post->ID, 'fcontent-bg', true);?>">
 										<div class="dcol-pad fix">
-												<?php pagelines_register_hook( 'pagelines_fcontent_before', $this->id );?>
+												<?php pagelines_register_hook( 'pagelines_fcontent_before', $this->id ); // Hook ?>
 												<div class="fheading">
 													<h2 class="ftitle"><?php the_title(); ?></h2>
 												</div>
@@ -294,17 +376,21 @@ class PageLinesFeatures extends PageLinesSection {
 													<?php pagelines_register_hook( 'pagelines_feature_text_top', $this->id ); // Hook ?>
 													<div class="fexcerpt">
 													<?php 
-														if(pagelines_option('feature_source') == 'posts') the_excerpt();
+														if(pagelines_option('feature_source') == 'posts') echo apply_filters( 'pagelines_feature_output', get_the_excerpt() );
 													 	else the_content(); 
 													?>
 													</div>
 													<?php if(get_post_meta($post->ID, 'feature-link-url', true)):?>
-														<a class="flink" href="<?php echo get_post_meta($post->ID, 'feature-link-url', true);?>"><span class="featurelink" ><?php echo $flink_text;?></span></a>
+														<a class="pagelines-blink black-blink flink" href="<?php echo get_post_meta($post->ID, 'feature-link-url', true);?>">
+															<span class="pagelines-blink-pad">
+																<span class="blink-arrow featurelink" ><?php echo __( $flink_text );?></span>
+															</span>
+														</a>
 													<?php endif;?>
 													<?php pagelines_register_hook( 'pagelines_feature_text_bottom', $this->id ); // Hook ?>
 													<?php edit_post_link(__('<span>Edit</span>', 'pagelines'), '', '');?>
 												</div>
-												<?php pagelines_register_hook( 'pagelines_fcontent_after', $this->id );?>
+												<?php pagelines_register_hook( 'pagelines_fcontent_after', $this->id ); // Hook ?>
 										</div>
 										
 									</div>
@@ -317,12 +403,12 @@ class PageLinesFeatures extends PageLinesSection {
 													<img src="<?php echo get_post_meta( $post->ID, 'feature-media-image', true);?>" />
 												</div>
 											<?php elseif(get_post_meta( $post->ID, 'feature-media', true)): ?>
-												<?php echo get_post_meta( $post->ID, 'feature-media', true); ?>
+												<?php echo do_shortcode(get_post_meta( $post->ID, 'feature-media', true)); ?>
 											<?php endif;?>
 											
 										</div>
 									</div>
-									<?php pagelines_register_hook( 'pagelines_feature_after', $this->id );?>
+									<?php pagelines_register_hook( 'pagelines_feature_after', $this->id ); // Hook ?>
 									<div class="clear"></div>
 								</div>
 							</div>
@@ -334,18 +420,11 @@ class PageLinesFeatures extends PageLinesSection {
 				<?php $post = $current_page_post;?>
 		
 			</div>
-		
-			<?php if(pagelines('feature_nav_type') == 'arrows'):?> 
-				<div id="arrownav">
-		 			<a href="#"><span id="prev">&nbsp;</span></a> 
-	       			<a href="#"><span id="next">&nbsp;</span></a>
-				</div>
-			<?php endif;?>
 		</div>
 		
-		<div id="feature-footer" class="<?php e_pagelines('feature_nav_type', '');?> <?php  if( count($this->the_feature_posts) == 1) echo 'nonav';?> fix">
+		<div id="feature-footer" class="<?php e_pagelines('feature_nav_type', '');?> <?php  if( isset($this->the_feature_posts) && count($this->the_feature_posts) == 1) echo 'nonav';?> fix">
 			<div class="feature-footer-pad">
-				<?php pagelines_register_hook( 'pagelines_feature_nav_before', $this->id );?>
+				<?php pagelines_register_hook( 'pagelines_feature_nav_before', $this->id ); // Hook ?>
 				<?php if(pagelines('timeout') != 0 && pagelines('feature_playpause')):?><span class="playpause pause"><span>&nbsp;</span></span><?php endif;?>
 				<div id="featurenav" class="fix">
 					
@@ -358,47 +437,7 @@ class PageLinesFeatures extends PageLinesSection {
 	<div class="clear"></div>
 <?php }
 
-	function get_feature_posts(){
-		global $post;
-		global $pagelines_ID;
-		
-		if(!isset($this->the_feature_posts)){
-			
-			if(pagelines_option('feature_source') == 'posts'){
-				$query_args = array('post_type' => 'post', 'orderby' =>'ID');
-				
-				if(pagelines_option('feature_category')){
-					$query_args = array_merge($query_args, array( 'cat' => pagelines('feature_category') ) );
-				}
-				
-			} else {
-				$query_args = array('post_type' => $this->id, 'orderby' =>'ID');
-			
-				if( get_pagelines_meta('feature_set', $pagelines_ID) ){
-					$query_args = array_merge($query_args, array( 'feature-sets' => get_post_meta($pagelines_ID, 'feature_set', true) ) );
-				} elseif (pagelines_non_meta_data_page() && pagelines_option('feature_default_tax')){
-					$query_args = array_merge($query_args, array( 'feature-sets' => pagelines_option('feature_default_tax') ) );
-				}
-			}
-	
-			
-			if(pagelines('feature_items', $pagelines_ID)){
-				$query_args = array_merge($query_args, array( 'showposts' => pagelines_option('feature_items', $pagelines_ID) ) );
-			}
-			
-			$feature_query = new WP_Query($query_args);
-		
-		 	$this->the_feature_posts = $feature_query->posts;
-			
-		
-			
-			return $this->the_feature_posts;
-			
-		} else {
-			return $this->the_feature_posts;
-		}
-	
-	}
+
 
 	function section_scripts() {  
 		
@@ -407,7 +446,7 @@ class PageLinesFeatures extends PageLinesSection {
 						'file' => $this->base_url . '/jquery.cycle.js',
 						'dependancy' => array('jquery'), 
 						'location' => 'footer', 
-						'version' => '2.86'
+						'version' => '2.99'
 					)	
 			);
 		
@@ -432,7 +471,9 @@ class PageLinesFeatures extends PageLinesSection {
 								'inputlabel' => 'Feature navigation type?',
 								'title' => 'Feature Navigation Mode',
 								'shortexp' => "Select the mode for your feature navigation",
-								'exp' => "Select from the three modes. Using feature names will use the names of the features, using the numbers will use incremental numbers, thumbnails will use feature thumbnails if provided."
+								'exp' => "Select from the three modes. Using feature names will use the names of the features, using the numbers will use incremental numbers, thumbnails will use feature thumbnails if provided.", 
+								'docslink'		=> 'http://www.pagelines.com/docs/feature-slider', 
+								'vidtitle'		=> 'View Feature Documentation'
 							),
 							'timeout' => array(
 									'default' => 0,
@@ -494,13 +535,13 @@ class PageLinesFeatures extends PageLinesSection {
 									'exp' => "By default the feature section will use feature posts, you can also set the source for features to a blog post category. Set the category ID in its option below. <br/> <strong>NOTE: If set to posts, excerpts will be used as content (control length through them). Also a new option panel will be added on post creation and editing pages.</strong>"
 								),
 							'feature_category' => array(
-									'default' => false,
+									'default' => 1,
 									'version'	=> 'pro',
-									'type' => 'text_small',
-									'inputlabel' => 'Post category ID',
-									'title' => 'Post Category ID (Blog Post Mode Only)',
-									'shortexp' => "Add the category ID to use if sourcing features from blog posts",
-									'exp' => "Get the ID for the category to use posts from for features"
+									'type' => 'select',
+									'selectvalues' => $this->get_cats(),
+									'title' => 'Post Category (Blog Post Mode Only)',
+									'shortexp' => "",
+									'exp' => "Select a category to use if sourcing features from blog posts"
 								),
 							'feature_default_tax' => array(
 									'default' 		=> 'default-features',
@@ -539,6 +580,17 @@ class PageLinesFeatures extends PageLinesSection {
 		}
 	} 
 
+
+function get_cats() {
+	
+	$cats = get_categories();
+	foreach( $cats as $cat ) {
+		$categories[ $cat->cat_ID ] = array(
+			'name' => $cat->name
+		);
+	}
+	return $categories;
+}
 
 // End of Section Class //
 }

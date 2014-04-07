@@ -19,7 +19,7 @@ class PageLinesCarousel extends PageLinesSection {
 		$default_settings = array(
 			'description' 	=> 'This is a javascript carousel that can show images and links from posts, FlickRSS, or NextGen Gallery.', 
 			'workswith'		=> array('content', 'header', 'footer'),
-			'icon'			=> CORE_IMAGES . '/admin/carousel.png',
+			'icon'			=> PL_ADMIN_ICONS . '/carousel.png',
 			'version'		=> 'pro',
 		);
 		
@@ -33,122 +33,116 @@ class PageLinesCarousel extends PageLinesSection {
 		
 		
 			
-		/*
-			Create meta fields for the post type
-		*/
-			$meta_array = array(
-			
+
+			$metatab_array = array(
+
 					'carousel_items' => array(
-						'version' => 'pro',
-						'type' => 'text',					
-						'inputlabel' => 'Max Carousel Items (Carousel Page Template)',
-						'exp' => 'The number of items/thumbnails to show in the carousel.'
+						'version' 	=> 'pro',
+						'type' 		=> 'text',
+						'size'		=> 'small',					
+						'title'	 	=> 'Max Carousel Items (Carousel Page Template)',
+						'desc' 		=> 'The number of items/thumbnails to show in the carousel.',
+						'label'		=> 'Enter the number of carousel items'
 					),
 					'carousel_mode' => array(
 						'version' => 'pro',
 						'type' => 'select',	
 						'selectvalues'=> array(
-							'flickr'=> 'Flickr (default)',
-							'posts' => 'Post Thumbnails',
-							'ngen_gallery' => 'NextGen Gallery'
+							'flickr'		=> 'Flickr (default)',
+							'posts' 		=> 'Post Thumbnails',
+							'ngen_gallery' 	=> 'NextGen Gallery', 
+							'hook'			=> 'Hook: "pagelines_carousel_list"'
 						),					
-						'inputlabel' => 'Carousel Image/Link Mode (Carousel Page Template)',
-						'exp' => 'Select the mode that the carousel should use for its thumbnails.<br/><br/>' .
+						'title' => 'Carousel Image/Link Mode (Carousel Page Template)',
+						'desc' => 'Select the mode that the carousel should use for its thumbnails.<br/><br/>' .
 								 '<strong>Flickr</strong> - (default) Uses thumbs from FlickrRSS plugin.<br/><strong> Post Thumbnails</strong> - Uses links and thumbnails from posts <br/>' .
 								 '<strong>NextGen Gallery</strong> - Uses an image gallery from the NextGen Gallery Plugin'
 					),
 					'carousel_ngen_gallery' => array(
 						'version' => 'pro',
 						'type' => 'text',					
-						'inputlabel' => 'NextGen Gallery ID For Carousel (Carousel Page Template / NextGen Mode)',
-						'exp' => 'Enter the ID of the NextGen Image gallery for the carousel. <strong>The NextGen Gallery and carousel template must be selected.</strong>'
+						'title' => 'NextGen Gallery ID For Carousel (Carousel Page Template / NextGen Mode)',
+						'desc' => 'Enter the ID of the NextGen Image gallery for the carousel. <strong>The NextGen Gallery and carousel template must be selected.</strong>'
 					),
 					'carousel_post_id' => array(
 						'version' => 'pro',
 						'type' => 'text',					
-						'inputlabel' => 'Enter Category Slug (Carousel Posts Mode)',
-						'exp' => 'Enter the name or slug of the category that the carousel should use for its images (posts mode only).'
+						'title' => 'Enter Category Slug (Carousel Posts Mode)',
+						'desc' => 'Enter the name or slug of the category that the carousel should use for its images (posts mode only).'
 					)
-					
-				);
-			$meta_settings = array(
-					'id' => 'carousel-meta',
-					'name' => THEMENAME." Carousel Options",
-					'posttype' => 'page'
 				);
 			
-			$this->meta_options =  new PageLinesMetaOptions($meta_array, $meta_settings);
-			$meta_settings = array(
-					'id' => 'carousel-meta',
-					'name' => THEMENAME." Carousel Options",
-					'posttype' => 'post'
+			$metatab_settings = array(
+					'id' => 'carousel_meta',
+					'name' => "Carousel Section",
+					'icon' => $this->icon
 				);
 			
-			$this->meta_options =  new PageLinesMetaOptions($meta_array, $meta_settings);
+			register_metatab($metatab_settings, $metatab_array);
 	}
 	
-   function section_template() {        
-?>		
-
+   function section_template() { ?>		
 	<div class="thecarousel">
 		<ul id="mycarousel" class="mycarousel">
 			<?php 
 			global $post;
 			global $pagelines_ID;
 			
-			// Pictures in Carousel
-			if(pagelines('carouselitems', $pagelines_ID)) $carouselitems = pagelines('carouselitems', $pagelines_ID);
-			else $carouselitems = 30;
+			// Set Up Variables
+			$carouselitems = (pagelines_option('carousel_items', $pagelines_ID)) ? pagelines_option('carousel_items', $pagelines_ID) : 30;
 			
 			$carousel_post_id = (pagelines_option('carousel_post_id', $pagelines_ID)) ? pagelines_option('carousel_post_id', $pagelines_ID) : null;
 
-			if(pagelines('carousel_image_width', $pagelines_ID)) $carousel_image_width = pagelines('carousel_image_width', $pagelines_ID);
-			else $carousel_image_width = 64;
-			if(pagelines('carousel_image_height', $pagelines_ID)) $carousel_image_height = pagelines('carousel_image_height', $pagelines_ID);
-			else $carousel_image_height = 64;
+			$carousel_image_width = (pagelines_option('carousel_image_width', $pagelines_ID)) ? pagelines_option('carousel_image_width', $pagelines_ID) : 64;
+			$carousel_image_height = (pagelines_option('carousel_image_height', $pagelines_ID)) ? pagelines_option('carousel_image_height', $pagelines_ID) : 64;
 			
-			if(function_exists('nggDisplayRandomImages')  && pagelines('carousel_mode', $post->ID) == 'ngen_gallery'):
+			$cmode = (pagelines_option('carousel_mode', $post->ID)) ? pagelines_option('carousel_mode', $post->ID): null;
+			
+			
+			if(function_exists('nggDisplayRandomImages')  && $cmode == 'ngen_gallery'):
 				
-				if(pagelines('carousel_ngen_gallery', $pagelines_ID)) $ngen_id = pagelines('carousel_ngen_gallery', $pagelines_ID);
-				else $ngen_id = 1; 
+				$ngen_id = (pagelines_option('carousel_ngen_gallery', $pagelines_ID)) ? pagelines_option('carousel_ngen_gallery', $pagelines_ID) : 1;
 						
 				echo do_shortcode('[nggallery id='.$ngen_id.' template=plcarousel]');
 				
-			elseif(function_exists('get_flickrRSS') && pagelines('carousel_mode', $pagelines_ID) == 'flickr'):
+			elseif(function_exists('get_flickrRSS') && $cmode == 'flickr'):
 			
+				if(!function_exists('get_and_delete_option')):  // fixes instantiation within the function in the plugin :/
 					get_flickrRSS( array(
 						'num_items' => $carouselitems, 
 						'html' => '<li><a href="%flickr_page%" title="%title%"><img src="%image_square%" alt="%title%"/><span class="list-title">%title%</span></a></li>'	
 					));
+				endif;
 			
-			elseif( (pagelines('carousel_mode', $pagelines_ID) == 'flickr' && !function_exists('get_flickrRSS')) || (pagelines('carousel_mode', $pagelines_ID) == 'ngen_gallery' && !function_exists('nggDisplayRandomImages'))):?>
+			elseif($cmode == 'hook'):
 				
-				<div class="carousel_text">
-				<?php _e("The plugin for the selected carousel mode (NextGen-Gallery or FlickrRSS) needs to be installed and activated.", 'pagelines');?>
-				</div>
+				pagelines_register_hook('pagelines_carousel_list');
+			
+			elseif( ($cmode == 'flickr' && !function_exists('get_flickrRSS')) || ($cmode == 'ngen_gallery' && !function_exists('nggDisplayRandomImages'))):
 				
-			<?php else:
+				printf('<div class="carousel_text">%s</div>', __("The plugin for the selected carousel mode (NextGen-Gallery or FlickrRSS) needs to be installed and activated.", 'pagelines'));
+				
+			else:
 			
 				$carousel_post_query = 'numberposts='.$carouselitems;
 				
-				if($carousel_post_id) $carousel_post_query .= '&category_name='.$carousel_post_id;
+				if($carousel_post_id) 
+					$carousel_post_query .= '&category_name='.$carousel_post_id;
 				
 				$recentposts = get_posts($carousel_post_query);
 				
-				foreach($recentposts as $key => $rpost):?>
-					<?php setup_postdata($rpost);?>
+				foreach($recentposts as $cid => $c): ?>
 
-						<li class="list-item fix">
-							<a class="carousel_image_link" href="<?php echo get_permalink($rpost->ID); ?>">
-							<?php if(has_post_thumbnail()): ?>
-		                              <?php the_post_thumbnail(array( $carousel_image_width, $carousel_image_height ),array( 'class' => 'list_thumb list-thumb' ));?>
-							<?php else: ?>
-								<img class="list_thumb list-thumb" src="<?php echo CORE_IMAGES;?>/post-blank.jpg" class="sidebar_thumb" />
-							<?php endif;?> 
-								<span class="list-title"><?php echo $rpost->post_title; ?></span>
-							</a>
-
-						</li>
+					<li class="list-item fix">
+						<a class="carousel_image_link" href="<?php echo get_permalink($c->ID); ?>">
+						<?php if(has_post_thumbnail($c->ID)): 
+								echo get_the_post_thumbnail( $c->ID, array( $carousel_image_width, $carousel_image_height ),array( 'class' => 'list_thumb list-thumb' )); ?>
+						<?php else: ?>
+							<img class="list_thumb list-thumb sidebar_thumb" src="<?php echo PL_ADMIN_IMAGES;?>/post-blank.jpg" />
+						<?php endif;?> 
+							<span class="list-title"><?php echo $c->post_title; ?></span>
+						</a>
+					</li>
 
 				<?php endforeach;?>
 			<?php endif;?>
@@ -164,25 +158,31 @@ class PageLinesCarousel extends PageLinesSection {
 		
 	}   
 
-	function section_head() {   ?>
-		<script type="text/javascript">
-		/* <![CDATA[ */
-		var $j = jQuery.noConflict();
-
-		$j(document).ready(function () {
-		    $j(".thecarousel").show();
-			$j(".thecarousel").jcarousel({
-				wrap: 'circular', 
-				visible: <?php e_pagelines('carousel_display_items', 9); ?>, 
-				easing: 'swing',
-				scroll: <?php e_pagelines('carousel_scroll_items', 6); ?>,
-				animation: 'slow'
-			});
+	function section_head() {   
+		
+		$carousel_items = (pagelines_option('carousel_display_items')) ? pagelines_option('carousel_display_items'): 9;
+		$carousel_scroll_items = (pagelines_option('carousel_scroll_items')) ? pagelines_option('carousel_scroll_items'): 6;
+		
+		$animation_speed = (pagelines_option('carousel_animation_speed')) ? pagelines_option('carousel_animation_speed'): 800;
+		?>
+<script type="text/javascript">
+/* <![CDATA[ */
+	var $j = jQuery.noConflict();
+	$j(document).ready(function () {
+	    $j(".thecarousel").show();
+		$j(".thecarousel").jcarousel({
+			wrap: 'circular', 
+			visible: <?php echo $carousel_items; ?>, 
+			easing: 'swing',
+			scroll: <?php echo $carousel_scroll_items; ?>,
+			animation: <?php echo $animation_speed; ?>
 		});
-		/* ]]> */
-		</script>
-
-	<?php }
+		
+		$j(".jcarousel-prev, .jcarousel-next").disableTextSelect();
+	});
+/* ]]> */
+</script>
+<?php }
 
 	function section_scripts() {  
 		
@@ -210,7 +210,8 @@ class PageLinesCarousel extends PageLinesSection {
 							'selectvalues'=> array(
 								'posts' 		=> array("name" => 'Post Featured Images (default)'),
 								'flickr'		=> array("name" => 'FlickrRSS Plugin'),
-								'ngen_gallery' 	=> array("name" => 'NextGen Gallery Plugin')
+								'ngen_gallery' 	=> array("name" => 'NextGen Gallery Plugin'), 
+								'hook'			=> array("name" => 'Hook: "pagelines_carousel_list"')
 							),					
 							'inputlabel' 	=> 'Carousel Image/Link Mode',
 							'exp' 			=> 'Select the mode that the carousel should use for its thumbnails.<br/><br/>' .
@@ -240,6 +241,14 @@ class PageLinesCarousel extends PageLinesSection {
 						'shortexp'		=> 'The number of images scrolled in one click',
 						'inputlabel' 	=> 'Items to scroll',
 						'exp' 			=> 'This option sets the number of images that will scroll when a user clicks the arrows, etc..'
+					),
+					'carousel_animation_speed' => array(
+						'default'		=> 800, 
+						'type' 			=> 'text_small',		
+						'title'			=> 'Carousel Animation Speed', 
+						'shortexp'		=> 'Set the time it takes to scroll',
+						'inputlabel' 	=> 'Carousel Animation Speed',
+						'exp' 			=> 'The speed of the scroll animation as string in  milliseconds (e.g. 800 for .8 seconds). If set to 0, animation is turned off.'
 					),
 					'carousel_image_dimensions' => array(
 							'type' => 'text_multi',
