@@ -2,6 +2,8 @@
 /* = PLATFORM THEME CSS by PageLines - PageLines Copyright 2008 - 2010 = */
 /* ========================================================================= */
 
+/* Somewhat modified by ? then modified again by Nick Echols 2014 */
+
 /* Defaults */
 	body{
 		height:100%;
@@ -14,11 +16,11 @@
 		
 /* @ Font Styles */
 
-	.font-primary, body, .commentlist{
+	/*.font-primary, body, .commentlist{
 		font-family:Georgia,'Times New Roman',Times,serif;	
-	}
+	}*/
 
-	.font-highlight, h1, h2, h3, h4, h5, h6{	
+	.font-primary, body, .commentlist, .font-highlight, h1, h2, h3, h4, h5, h6{	
 		font-family:'palatino','palatino linotype', Georgia,'Times New Roman',Times,serif;
 	}
 
@@ -63,9 +65,9 @@
 	
 /* @ Links & Link Effects */
 	a {text-decoration:none;}
-	a, #subnav_row li.current_page_item a, #subnav_row li a:hover, #grandchildnav .current_page_item > a, .branding h1 a:hover, .post-comments a:hover, .bbcrumb a:hover, 	#feature_slider .fcontent.fstyle-lightbg a, #feature_slider .fcontent.fstyle-nobg a{ color:#225E9B;}
+	a, #subnav_row li.current_page_item a, #subnav_row li a:hover, #grandchildnav .current_page_item > a, .branding h1 a:hover, .post-comments a:hover, .bbcrumb a:hover, 	#feature_slider .fcontent.fstyle-lightbg a, #feature_slider .fcontent.fstyle-nobg a{ color:#000000;}
 
-	.hentry a:hover{color: #0be3f9}
+	.hentry a:hover{color: #0be3f9; text-decoration: none;}
 
 	#subnav ul li a:active{color:#000;text-decoration:none;}
 	
@@ -693,6 +695,9 @@
 			
 			.widget ul { margin:0 0 10px .4em; }
 			.widget ul.sub-menu { margin:0px;}
+			.widget ul.sub-menu li a {
+				color:#777076;
+			}
 			.widget ul li{
 				list-style:none;
 				display: block;
@@ -856,7 +861,7 @@
 	#left {
 		width: 650px;
 		padding:0px 0px 0px 0px;
-		font-family: century gothic, tahoma, sans-serif;
+		font-family: "century gothic", tahoma, sans-serif;
 		font-size: 11px;
 		line-height: 18px;
 		letter-spacing: .05em;
@@ -866,7 +871,7 @@
 	#left2 {
 		width: 650px;
 		padding:0px 0px 0px 0px;
-		font-family: century gothic, tahoma, sans-serif;
+		font-family: "century gothic", tahoma, sans-serif;
 		font-size: 11px;
 		line-height: 18px;
 		letter-spacing: .05em;
@@ -878,7 +883,7 @@
 	#right {
 		width: 215px;
 		padding:0px 0px 0px 20px;
-		font-family: century gothic, tahoma, sans-serif;
+		font-family: 'century gothic', Arial, tahoma, sans-serif;
 		font-size: 11px;
 		line-height: 18px;
 		letter-spacing: .05em;
@@ -991,7 +996,7 @@
 	
 	#footer ul, #footer li, #footer li a, {
 	font-size:9pt;
-	font-family: helvetica, arial, sans serif;
+	font-family: helvetica, arial, sans-serif;
 	}
 	
 	#footer a{color: #fff;}
