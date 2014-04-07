@@ -22,3 +22,7 @@ font-family: century gothic, tahoma, sans-serif;
 		letter-spacing: .05em;
 		
 	}
+
+#logo {
+	display: none;
+}
