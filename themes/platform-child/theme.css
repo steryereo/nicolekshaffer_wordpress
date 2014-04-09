@@ -4,6 +4,10 @@
 
 /* Somewhat modified by ? then modified again by Nick Echols 2014 */
 
+.image-caption {
+	text-align: left;
+}
+
 /* Defaults */
 	body{
 		height:100%;
