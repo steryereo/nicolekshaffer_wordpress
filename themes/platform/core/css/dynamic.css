@@ -8,22 +8,22 @@
 #primary-nav ul{width:992px}
 
 .fullwidth #pagelines_content #column-main, .fullwidth .wmain, .fullwidth #buddypress-page #container{width:960px}
-.fullwidth #pagelines_content #sidebar1, .fullwidth #buddypress-page #sidebar1{width:0px}
+.fullwidth #pagelines_content #sidebar1, .fullwidth #buddypress-page #sidebar1{width:px}
 .fullwidth #pagelines_content #sidebar2, .fullwidth #buddypress-page #sidebar2{width:252px}
 .fullwidth #pagelines_content #column-wrap, .fullwidth #buddypress-page #container{width:960px}
 .fullwidth #pagelines_content #sidebar-wrap, .fullwidth #buddypress-page #sidebar-wrap{width:0px}
 
-.one-sidebar-right #pagelines_content #column-main, .one-sidebar-right .wmain, .one-sidebar-right #buddypress-page #container{width:640px}
-.one-sidebar-right #pagelines_content #sidebar1, .one-sidebar-right #buddypress-page #sidebar1{width:572px}
+.one-sidebar-right #pagelines_content #column-main, .one-sidebar-right .wmain, .one-sidebar-right #buddypress-page #container{width:800px}
+.one-sidebar-right #pagelines_content #sidebar1, .one-sidebar-right #buddypress-page #sidebar1{width:412px}
 .one-sidebar-right #pagelines_content #sidebar2, .one-sidebar-right #buddypress-page #sidebar2{width:0px}
-.one-sidebar-right #pagelines_content #column-wrap, .one-sidebar-right #buddypress-page #container{width:640px}
-.one-sidebar-right #pagelines_content #sidebar-wrap, .one-sidebar-right #buddypress-page #sidebar-wrap{width:572px}
+.one-sidebar-right #pagelines_content #column-wrap, .one-sidebar-right #buddypress-page #container{width:800px}
+.one-sidebar-right #pagelines_content #sidebar-wrap, .one-sidebar-right #buddypress-page #sidebar-wrap{width:412px}
 
-.one-sidebar-left #pagelines_content #column-main, .one-sidebar-left .wmain, .one-sidebar-left #buddypress-page #container{width:1012px}
-.one-sidebar-left #pagelines_content #sidebar1, .one-sidebar-left #buddypress-page #sidebar1{width:200px}
+.one-sidebar-left #pagelines_content #column-main, .one-sidebar-left .wmain, .one-sidebar-left #buddypress-page #container{width:1072px}
+.one-sidebar-left #pagelines_content #sidebar1, .one-sidebar-left #buddypress-page #sidebar1{width:140px}
 .one-sidebar-left #pagelines_content #sidebar2, .one-sidebar-left #buddypress-page #sidebar2{width:0px}
-.one-sidebar-left #pagelines_content #column-wrap, .one-sidebar-left #buddypress-page #container{width:1012px}
-.one-sidebar-left #pagelines_content #sidebar-wrap, .one-sidebar-left #buddypress-page #sidebar-wrap{width:200px}
+.one-sidebar-left #pagelines_content #column-wrap, .one-sidebar-left #buddypress-page #container{width:1072px}
+.one-sidebar-left #pagelines_content #sidebar-wrap, .one-sidebar-left #buddypress-page #sidebar-wrap{width:140px}
 
 .two-sidebar-right #pagelines_content #column-main, .two-sidebar-right .wmain, .two-sidebar-right #buddypress-page #container{width:480px}
 .two-sidebar-right #pagelines_content #sidebar1, .two-sidebar-right #buddypress-page #sidebar1{width:240px}
@@ -31,11 +31,11 @@
 .two-sidebar-right #pagelines_content #column-wrap, .two-sidebar-right #buddypress-page #container{width:480px}
 .two-sidebar-right #pagelines_content #sidebar-wrap, .two-sidebar-right #buddypress-page #sidebar-wrap{width:732px}
 
-.two-sidebar-left #pagelines_content #column-main, .two-sidebar-left .wmain, .two-sidebar-left #buddypress-page #container{width:480px}
+.two-sidebar-left #pagelines_content #column-main, .two-sidebar-left .wmain, .two-sidebar-left #buddypress-page #container{width:732px}
 .two-sidebar-left #pagelines_content #sidebar1, .two-sidebar-left #buddypress-page #sidebar1{width:240px}
-.two-sidebar-left #pagelines_content #sidebar2, .two-sidebar-left #buddypress-page #sidebar2{width:492px}
-.two-sidebar-left #pagelines_content #column-wrap, .two-sidebar-left #buddypress-page #container{width:480px}
-.two-sidebar-left #pagelines_content #sidebar-wrap, .two-sidebar-left #buddypress-page #sidebar-wrap{width:732px}
+.two-sidebar-left #pagelines_content #sidebar2, .two-sidebar-left #buddypress-page #sidebar2{width:240px}
+.two-sidebar-left #pagelines_content #column-wrap, .two-sidebar-left #buddypress-page #container{width:732px}
+.two-sidebar-left #pagelines_content #sidebar-wrap, .two-sidebar-left #buddypress-page #sidebar-wrap{width:480px}
 
 .two-sidebar-center #pagelines_content #column-main, .two-sidebar-center .wmain, .two-sidebar-center #buddypress-page #container{width:480px}
 .two-sidebar-center #pagelines_content #sidebar1, .two-sidebar-center #buddypress-page #sidebar1{width:240px}
@@ -61,6 +61,7 @@
 
 body #page{background:#FFFFFF;}
 a, #subnav_row li.current_page_item a, #subnav_row li a:hover, #grandchildnav .current_page_item > a, .branding h1 a:hover, .post-comments a:hover, .bbcrumb a:hover, 	#feature_slider .fcontent.fstyle-lightbg a, #feature_slider .fcontent.fstyle-nobg a{color:#000000;}
+a:hover,.commentlist cite a:hover,  #grandchildnav .current_page_item a:hover, .headline h1 a:hover{color:#0ca5e6;}
 
 
 /* Custom CSS */
