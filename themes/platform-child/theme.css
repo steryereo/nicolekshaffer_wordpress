@@ -4,6 +4,12 @@
 
 /* Somewhat modified by ? then modified again by Nick Echols 2014 */
 
+/*.photospace {
+	border:1px dotted #888;
+	padding: 8px;
+	margin:2px 2px 2px 2px;
+}
+*/
 .image-caption {
 	text-align: left;
 }
