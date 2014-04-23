@@ -14,6 +14,15 @@
 	text-align: left;
 }
 
+#below-photo {
+	padding-top:18px;
+	font-family: 'century gothic', Arial, tahoma, sans-serif;
+	font-size: 11px;
+	line-height: 18px;
+	letter-spacing: .05em;
+	position: absolute;
+}
+
 /* Defaults */
 	body{
 		height:100%;

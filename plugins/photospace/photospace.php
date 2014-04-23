@@ -743,6 +743,20 @@ function photospace_shortcode( $atts ) {
 								'left' : Math.floor((slide.width() - slideImage.width()) / 2) + slideImage.outerWidth() - slideImage.width()
 							})
 							.fadeTo(duration, 1.0);
+
+						// ADDED BY NICK ECHOLS 2014 SORRY!!!!!! 
+						// **************************************************/
+
+						var below = jQuery('#below-photo');
+						below.width(jQuery('.slideshow-container').width()).offset({
+							'top' : slideImage.offset().top + slideImage.outerHeight(),
+							'left' : jQuery('.slideshow-container').offset().left
+						});
+						jQuery('#gallerycontainer2').height(jQuery('.photospace').outerHeight()+
+															below.outerHeight());
+
+						// **************************************************/
+						// END OF NICK ECHOLS ADDITION
 						
 					},
 					onPageTransitionOut:       function(callback) {
